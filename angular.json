@@ -30,6 +30,7 @@
               "projects/demo/src/assets"
             ],
             "styles": [
+              "projects/demo/src/custom-theme.scss",
               "projects/demo/src/styles.sass"
             ],
             "scripts": []
