@@ -14,6 +14,11 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
+    "paths": {
+      "npx-dynamic-table": [
+        "./dist/npx-dynamic-table"
+      ]
+    },
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
