@@ -26,7 +26,7 @@ export const rowsAnimation = trigger('rowsAnimation', [
 ])
 
 @Component({
-  selector: 'npx-dynamic-table',
+  selector: 'ngx-dynamic-table',
   standalone: true,
   imports: [
     CommonModule,
@@ -40,10 +40,10 @@ export const rowsAnimation = trigger('rowsAnimation', [
     ScrollIndicatorComponent,
     StickyDirective
   ],
-  templateUrl: './npx-dynamic-table.component.html',
-  styleUrls: ['./npx-dynamic-table.component.sass']
+  templateUrl: './ngx-dynamic-table.component.html',
+  styleUrls: ['./ngx-dynamic-table.component.sass']
 })
-export class NpxDynamicTableComponent implements OnInit {
+export class NgxDynamicTableComponent implements OnInit {
   @Input() table!: Tableoptions
   @Input() data$!: Observable<any[]>
   @Input() isClickable: boolean = true

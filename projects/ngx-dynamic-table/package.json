@@ -1,5 +1,5 @@
 {
-  "name": "@christophhu/npx-dynamic-table",
+  "name": "@christophhu/ngx-dynamic-table",
   "version": "1.0.0",
   "description": "Create Angular Material Table dynamically.",
   "license": "MIT",
@@ -23,11 +23,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChristophHu/npx-dynamic-table.git"
+    "url": "https://github.com/ChristophHu/ngx-dynamic-table.git"
   },
   "bugs": {
-    "url": "https://github.com/ChristophHu/npx-dynamic-table/issues"
+    "url": "https://github.com/ChristophHu/ngx-dynamic-table/issues"
   },
-  "homepage": "https://github.com/ChristophHu/npx-dynamic-table#readme",
+  "homepage": "https://github.com/ChristophHu/ngx-dynamic-table#readme",
   "sideEffects": false
 }

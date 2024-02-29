@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NpxDynamicTableComponent } from '../../../npx-dynamic-table/src/lib/npx-dynamic-table.component';
+import { NgxDynamicTableComponent } from '../../../ngx-dynamic-table/src/lib/ngx-dynamic-table.component';
 import { Observable, Subject, from, of } from 'rxjs';
-import { Tableoptions } from '../../../npx-dynamic-table/src/lib/models/tableoptions.model';
-import { TableActionReturn } from '../../../npx-dynamic-table/src/lib/models/tableaction.model';
-import { TableActionEnum } from '../../../npx-dynamic-table/src/lib/models/tableaction.enum';
+import { Tableoptions } from '../../../ngx-dynamic-table/src/lib/models/tableoptions.model';
+import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tableaction.model';
+import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
 import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
@@ -13,7 +13,7 @@ import { CommonModule, DatePipe } from '@angular/common';
   imports: [
     CommonModule,
     DatePipe,
-    NpxDynamicTableComponent,
+    NgxDynamicTableComponent,
     RouterOutlet
   ],
   templateUrl: './app.component.html',

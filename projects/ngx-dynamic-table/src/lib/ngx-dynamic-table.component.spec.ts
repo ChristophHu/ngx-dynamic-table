@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NpxDynamicTableComponent } from './npx-dynamic-table.component';
+import { NgxDynamicTableComponent } from './ngx-dynamic-table.component';
 
-describe('NpxDynamicTableComponent', () => {
-  let component: NpxDynamicTableComponent;
-  let fixture: ComponentFixture<NpxDynamicTableComponent>;
+describe('NgxDynamicTableComponent', () => {
+  let component: NgxDynamicTableComponent;
+  let fixture: ComponentFixture<NgxDynamicTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NpxDynamicTableComponent]
+      imports: [NgxDynamicTableComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(NpxDynamicTableComponent);
+    fixture = TestBed.createComponent(NgxDynamicTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

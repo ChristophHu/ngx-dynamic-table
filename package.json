@@ -1,5 +1,5 @@
 {
-  "name": "npx-dynamic-table",
+  "name": "ngx-dynamic-table",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,9 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "twpreprocess": "tailwindcss -c ./projects/demo/tailwind.config.js -o ./projects/npx-dynamic-table/src/lib/tailwind.scss & ng build npx-notifications",
-    "preprocess": "ng build npx-dynamic-table",
-    "publish": "cd dist/npx-dynamic-table && npm publish --access public"
+    "twpreprocess": "tailwindcss -c ./projects/demo/tailwind.config.js -o ./projects/ngx-dynamic-table/src/lib/tailwind.scss & ng build ngx-notifications",
+    "preprocess": "ng build ngx-dynamic-table",
+    "publish": "cd dist/ngx-dynamic-table && npm publish --access public"
   },
   "private": true,
   "dependencies": {

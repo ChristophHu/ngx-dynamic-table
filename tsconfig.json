@@ -15,8 +15,8 @@
     "declaration": false,
     "experimentalDecorators": true,
     "paths": {
-      "npx-dynamic-table": [
-        "./dist/npx-dynamic-table"
+      "ngx-dynamic-table": [
+        "./dist/ngx-dynamic-table"
       ]
     },
     "moduleResolution": "node",
