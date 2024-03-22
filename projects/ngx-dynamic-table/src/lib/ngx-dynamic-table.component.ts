@@ -26,7 +26,7 @@ export const rowsAnimation = trigger('rowsAnimation', [
 ])
 
 @Component({
-  selector: 'ngx-dynamic-table',
+  selector: 'dynamic-table',
   standalone: true,
   imports: [
     CommonModule,

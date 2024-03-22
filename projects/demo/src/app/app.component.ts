@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxDynamicTableComponent } from '../../../ngx-dynamic-table/src/lib/ngx-dynamic-table.component';
-import { Observable, Subject, from, of } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { Tableoptions } from '../../../ngx-dynamic-table/src/lib/models/tableoptions.model';
 import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tableaction.model';
 import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
@@ -52,7 +52,7 @@ export class AppComponent implements OnDestroy {
       // { id: '3', name: 'date', header: 'Date', cell: 'date', pipe: { name: DatePipe, args: 'dd.MM.'}, hidden: false, sortable: true }
     ],
     columnFilter: ['date', 'ort'],
-    columnNames: ['id', 'name', 'date', 'ort', 'actions'],
+    columnNames: ['name', 'date', 'ort', 'actions'],
     showCount: true,
     showPaginator: false,
     sortColumn: 'date',
