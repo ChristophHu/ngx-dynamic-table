@@ -1,0 +1,33 @@
+{
+  "name": "@christophhu/ngx-dynamic-table",
+  "version": "1.0.0",
+  "description": "Create Angular Material Table dynamically.",
+  "license": "MIT",
+  "author": {
+    "name": "Christoph Huschenhoefer",
+    "email": "christoph@nxt.codes"
+  },
+  "keywords": [
+    "angular",
+    "table",
+    "tailwindcss"
+  ],
+  "peerDependencies": {
+    "@angular/cdk": "^17.2.0",
+    "@angular/common": "^17.2.0",
+    "@angular/core": "^17.2.0",
+    "@angular/material": "^17.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristophHu/ngx-dynamic-table.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChristophHu/ngx-dynamic-table/issues"
+  },
+  "homepage": "https://github.com/ChristophHu/ngx-dynamic-table#readme",
+  "sideEffects": false
+}
