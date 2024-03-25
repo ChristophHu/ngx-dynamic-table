@@ -73,7 +73,7 @@
 
 // paginator
 .mat-mdc-paginator
-    @apply bg-tertiary text-dark #{!important}
+    @apply bg-tertiary text-dark text-lg #{!important}
 
     .mdc-text-field
         // @apply text-dark #{!important}
@@ -89,3 +89,38 @@
 
     .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing
         @apply border-borderline border #{!important}
+
+    .mat-paginator-navigation-previous
+        display: none !important
+
+    .mat-paginator-navigation-next
+        display: none !important
+
+.mat-mdc-paginator-range-actions
+    @apply text-dark text-xs #{!important}
+
+    .mat-mdc-paginator-icon
+        @apply fill-dark #{!important}
+    
+// bubble-pagination
+.nxt-bubble-container
+  display: flex
+  gap: 4px
+
+.nxt-bubble
+    @apply flex h-8 w-8 bg-light items-center justify-center text-darker text-xs rounded-full cursor-pointer duration-300
+
+.nxt-bubble:hover
+  background-color: #b6b6b6
+  color: white
+
+.nxt-bubble__active
+    @apply bg-accent
+//   background-color: #6193a1
+//   color: white
+
+.nxt-bubble__disabled
+  cursor: default
+  opacity: 0.5
+  pointer-events: none
+  color: 919191

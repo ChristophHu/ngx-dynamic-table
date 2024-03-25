@@ -28,3 +28,92 @@
 
 .mat-mdc-row
     @apply bg-tertiary text-dark #{!important}
+
+// paginator
+.mat-mdc-paginator
+    @apply bg-tertiary text-dark #{!important}
+
+    .mdc-text-field
+        // @apply text-dark #{!important}
+
+    .mdc-text-field--outlined
+        // @apply outline-none border-borderline #{!important}
+
+    .mat-mdc-select
+        @apply text-dark #{!important}
+
+    .mat-mdc-select-arrow
+        @apply text-dark #{!important}
+
+    .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing
+        @apply border-borderline border #{!important}
+
+    .mat-paginator-navigation-previous
+        display: none !important
+
+    .mat-paginator-navigation-next
+        display: none !important
+
+.mat-mdc-paginator-icon
+    @apply fill-none text-dark #{!important}
+    
+// bubble-pagination
+.nxt-bubble-container
+  display: flex
+  gap: 4px
+
+.nxt-bubble
+  background-color: #919191
+  border-radius: 50%
+  width: 34px
+  height: 34px
+  display: flex
+  align-items: center
+  justify-content: center
+  color: white !important
+  font-size: 14px
+  cursor: pointer
+  transition: 0.3s
+
+.nxt-bubble:hover
+  background-color: #b6b6b6
+  color: white
+
+.nxt-bubble__active
+    @apply bg-dark text-darker
+//   background-color: #6193a1
+//   color: white
+
+.nxt-bubble__disabled
+  cursor: default
+  opacity: 0.5
+  pointer-events: none
+  color: 919191
+
+/* TODO(mdc-migration): The following rule targets internal classes of paginator that may no longer apply for the MDC version. */
+mat-paginator
+  background: transparent !important
+
+.mat-mdc-paginator-range-actions
+  margin-right: 12px !important
+
+.paginator
+    font-family: 'Lato', sans-serif
+    font-size: 15px
+
+.paginator .ngx-pagination .current
+    background: rgb(131, 131, 131)
+    border-radius: 4px
+    padding-left: 9px
+    padding-right: 9px
+
+.paginator .ngx-pagination a:hover, .ngx-pagination button:hover
+    background: #d4d4d4
+    border-radius: 3px
+    padding-left: 9px
+    padding-right: 9px
+    text-decoration: none
+
+.paginator .ngx-pagination a:focus, .ngx-pagination button:focus
+    outline: none
+    background: #d4d4d4

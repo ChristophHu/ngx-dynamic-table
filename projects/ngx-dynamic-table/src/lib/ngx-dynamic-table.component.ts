@@ -1,19 +1,20 @@
-import { animate, sequence, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Tableoptions } from './models/tableoptions.model';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { TableActionReturn } from './models/tableaction.model';
-import { MatSort, MatSortModule, MatSortable } from '@angular/material/sort';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { DynamicTableService } from './services/dynamic-table.service';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { TableActionEnum } from './models/tableaction.enum';
-import { CommonModule } from '@angular/common';
-import { DynamicPipe } from './pipes/dynamic/dynamic.pipe';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { animate, sequence, style, transition, trigger } from '@angular/animations'
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core'
+import { Tableoptions } from './models/tableoptions.model'
+import { BehaviorSubject, Observable } from 'rxjs'
+import { TableActionReturn } from './models/tableaction.model'
+import { MatSort, MatSortModule, MatSortable } from '@angular/material/sort'
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
+import { DynamicTableService } from './services/dynamic-table.service'
+import { MatTableDataSource, MatTableModule } from '@angular/material/table'
+import { TableActionEnum } from './models/tableaction.enum'
+import { CommonModule } from '@angular/common'
+import { DynamicPipe } from './pipes/dynamic/dynamic.pipe'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatMenuModule } from '@angular/material/menu'
-import { ScrollIndicatorComponent } from './components/scroll-indicator/scroll-indicator.component';
-import { StickyDirective } from './directives/sticky/sticky.directive';
+import { ScrollIndicatorComponent } from './components/scroll-indicator/scroll-indicator.component'
+import { StickyDirective } from './directives/sticky/sticky.directive'
+import { BubblePaginationDirective } from './directives/bubble-pagination/bubble-pagination.directive'
 
 export const rowsAnimation = trigger('rowsAnimation', [
   transition('void => *', [
@@ -36,6 +37,7 @@ export const rowsAnimation = trigger('rowsAnimation', [
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    BubblePaginationDirective,
     ReactiveFormsModule,
     ScrollIndicatorComponent,
     StickyDirective
@@ -50,10 +52,10 @@ export class NgxDynamicTableComponent implements OnInit {
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
 
   // @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null
-  paginator!: MatPaginator;
+  paginator!: MatPaginator
   @ViewChild(MatPaginator) set _paginator(paginator: MatPaginator) {
-    this.paginator = paginator;
-    this.dataSource.paginator = this.paginator;
+    this.paginator = paginator
+    this.dataSource.paginator = this.paginator
   }
   @ViewChild(MatSort) sort!: MatSort
 
@@ -88,15 +90,15 @@ export class NgxDynamicTableComponent implements OnInit {
               if (this.sort != undefined) this.sort.sort(({ id: this.table.sortColumn, start: this.table.sortStart }) as MatSortable)
             }
             this.dataSource.sort = this.sort
-            this.dataSource.data = data;
+            this.dataSource.data = data
 
             // ToDo: date is hardcoded!
             this.dataSource.sortingDataAccessor = (item: any, property: any) => {
               switch (property) {
-                 case 'date': return new Date(item.date);
-                 default: return item[property];
+                 case 'date': return new Date(item.date)
+                 default: return item[property]
               }
-            };
+            }
   
             this.dataSource.filterPredicate = (data: any, filter: string) => {
               let match: boolean = false
@@ -138,7 +140,7 @@ export class NgxDynamicTableComponent implements OnInit {
 
   isSticky(id: string) {
     const buttonToggleGroup: string[] = ['count', 'name']
-    return (buttonToggleGroup || []).indexOf(id) !== -1;
+    return (buttonToggleGroup || []).indexOf(id) !== -1
   }
 
   textfilter(filterText: string) {

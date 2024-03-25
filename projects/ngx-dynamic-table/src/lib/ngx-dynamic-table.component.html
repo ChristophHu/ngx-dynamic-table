@@ -73,14 +73,14 @@
             </thead>
             <tr mat-row *matRowDef="let row; columns: table.columnNames;" (click)="show(row)"></tr>
         </table>
-        <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator>
-        <!-- <mat-paginator
-            appBubblePagination
+        <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->
+        <mat-paginator
+            nxtBubblePagination
             [appCustomLength]="dataSource.data.length"
             [length]="dataSource.data.length"
             [pageSize]="pageSize"
             >
-        </mat-paginator> -->
+        </mat-paginator>
     </div>
     <scroll-indicator [scrollableContent]="scrollableContent" [distance]="table.showPaginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>
 </ng-container>
