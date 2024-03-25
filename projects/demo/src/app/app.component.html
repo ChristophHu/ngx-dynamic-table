@@ -15,16 +15,17 @@
 
       <div class="relative flex-auto w-full overflow-auto">
           @defer (when isVisible; prefetch on timer(1000ms)) {
-            <dynamic-table [table]="table" [data$]="data$" (action)="returnTableAction($event)" [isClickable]="true"></dynamic-table>
+            <dynamic-table [table]="table" [data$]="data$" [pageSize]="2" (action)="returnTableAction($event)" [isClickable]="true"></dynamic-table>
           }
           @placeholder (minimum 100ms) {
             <div class="bg-tertiary">
-              <div class="flex w-full justify-center" *ngIf="isSpinnerVisible">
-                <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
+              <div class="flex w-full p-2 justify-center" *ngIf="isSpinnerVisible">
+                <circular-spinner></circular-spinner>
+                <!-- <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
                   Placeholder
-                    <!-- <icons class="" name="spinner"></icons> -->
+                    <icons class="" name="spinner"></icons>
                 </div>
-                <span class="sr-only">Loading...</span>
+                <span class="sr-only">Loading...</span> -->
               </div>
             </div>
           }
@@ -34,9 +35,9 @@
           @error {
             <div class="h-4 bg-tertiary">Error</div>
           }
-          <div class="debug-item-hide bg-tertiary text-dark border-t border-borderline">
+          <!-- <div class="debug-item-hide bg-tertiary text-dark border-t border-borderline">
             <pre class="p-4 bg-gradient-45 to-gray-600">{{ (data$ | async) | json }}</pre>
-          </div>
+          </div> -->
           <div class="h-4 bg-tertiary border-t border-borderline rounded-b-lg"></div>
         </div>
   </div>
