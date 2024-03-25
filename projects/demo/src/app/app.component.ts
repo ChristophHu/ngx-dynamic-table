@@ -1,7 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxDynamicTableComponent } from '../../../ngx-dynamic-table/src/lib/ngx-dynamic-table.component';
-import { Observable, Subject, of } from 'rxjs';
+import { Observable, Subject, of, timeout } from 'rxjs';
 import { Tableoptions } from '../../../ngx-dynamic-table/src/lib/models/tableoptions.model';
 import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tableaction.model';
 import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
@@ -19,7 +19,7 @@ import { CommonModule, DatePipe } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
   isVisible: boolean = false
   isSpinnerVisible: boolean = true;
 
@@ -32,6 +32,12 @@ export class AppComponent implements OnDestroy {
       { id: '1', name: 'Tim', date: '01.01.2024 00:00:59', ort: 'Berlin' },
       { id: '2', name: 'Tom', date: '01.01.2023 00:00:59', ort: 'Hamburg' }
     ])
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.isVisible = true
+    },2000)
   }
 
   ngOnDestroy(): void {

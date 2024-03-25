@@ -1,11 +1,12 @@
 <ng-container *ngIf="table && (data$ | async)?.length != 0 && (data$ | async) as data; else noData">
-    <div class="absolute flex flex-col h-full w-full overflow-auto scrollbar-hide" cdk-scrollable #scrollableContent>
+    <div class="relative flex flex-col w-full bg-tertiary px-2 overflow-auto scrollbar-hide" cdk-scrollable #scrollableContent>
         <table mat-table [dataSource]="dataSource" matSort class="relative w-full">
             <thead>
                 <ng-container matColumnDef="count">
                     <th mat-header-cell *matHeaderCellDef> Nr. </th>
                     <td mat-cell *matCellDef="let element; let i = index">{{ this.paginator!.pageIndex == 0 ? i + 1 : 1 + i + this.paginator!.pageIndex * this.paginator!.pageSize }}</td>
                 </ng-container>
+        
                 <ng-container *ngFor="let column of table.columns" matColumnDef="{{ column.name }}">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable" [ngClass]="{'hidden': column.hidden}"> {{ column.header }} </th>
                     <td mat-cell *matCellDef="let element" [ngClass]="{'hidden': column.hidden}">
@@ -40,14 +41,17 @@
                         </ng-template>
                     </td> 
                 </ng-container>
+            
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef></th>
                     <td mat-cell *matCellDef="let element">
-                        <!-- <button [matMenuTriggerFor]="menu"> -->
-                            <div class="h-6 w-6 fill-gray-600" [matMenuTriggerFor]="menu">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="5" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /></svg>
+                        <button [matMenuTriggerFor]="menu" class="w-full">
+                            <div class=" h-6 w-6 fill-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="currentFill" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" /></svg>
+                                <span></span>
                             </div>
-                        <!-- </button> -->
+                        </button>
+                        
                         <mat-menu #menu="matMenu">
                             <ng-container *ngFor="let action of table.actions">
                                 <button mat-menu-item class="!flex items-center" (click)="clickAction(element.id, action.action)">
@@ -63,22 +67,46 @@
         </table>
         <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator>
     </div>
-    <div class="h-4 bg-white border-t rounded-b-lg"></div>
+    <div class="h-4 bg-red-200 border-t border-borderline rounded-b-lg"></div>
     <scroll-indicator [scrollableContent]="scrollableContent" [distance]="table.showPaginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>
 </ng-container>
+
 <ng-template #noData>
     <div class="flex h-12 w-full items-center justify-center text-gray-800">
         <div *ngIf="!(data$ | async)" class="text-xl">
             <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
+                <!-- <icons class="" name="spinner"></icons> -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 101" fill="currentFill" stroke="currentColor"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/></svg>
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentFill" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="5" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /></svg> -->
             </div>
             <span class="sr-only">Loading...</span>
         </div>
         <div *ngIf="(data$ | async)?.length == 0" class="!flex text-xl">
             <div class="w-8 h-8 mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 9v2m0 4v.01" /><path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" /></svg>
+                <!-- <icons class="stroke-2 stroke-current" name="alert-triangle"></icons> -->
             </div>
             <span>Es konnten keine Daten geladen werden.</span>
         </div>
     </div>
 </ng-template>
+
+<!-- {{ table | json }}
+...{{ (data$ | async) | json }}
+@defer (on viewport; prefetch on timer(2000ms)) {
+    <span>Test1</span>
+}
+@placeholder {
+    <div>Test2</div>
+}
+@error {
+    <div class="w-8 h-8 mr-2">
+        <icons class="stroke-2 stroke-current" name="alert-triangle"></icons>
+    </div>
+    <span>Es konnten keine Daten geladen werden.</span>
+}
+@loading {
+    <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
+        <icons class="" name="spinner"></icons>
+    </div>
+    <span class="sr-only">Loading...</span>
+} -->

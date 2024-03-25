@@ -1,6 +1,41 @@
-<!-- @defer (when isVisible; prefetch on timer(1000ms)) { -->
-  <dynamic-table [table]="table" [data$]="data$" (action)="returnTableAction($event)" [isClickable]="true"></dynamic-table>
-<!-- }
+<div class="absolute overflow-hidden inset-0 p-4 pb-0 bottom-16">
+  <div class="flex flex-col h-full overflow-y-auto scrollbar-hide">
+      <div class="flex flex-row p-4 justify-between bg-tertiary border-b border-borderline rounded-t-lg z-10">
+          <div>
+              <h2 class="text-darker text-2xl font-bold">Tabelle</h2>
+              <p class="text-sm text-dark">Dies ist die Beschreibung zu dieser Tabelle.</p>
+          </div>
+          <!-- <div>
+              <button class="w-10 h-10 m-2 bg-secondary text-accent shadow-inner rounded-full cursor-pointer"
+                  (click)="createPosition()">
+                  <icons class="w-8 h-8 stroke-1 stroke-current" name="add"></icons>
+              </button>
+          </div> -->
+      </div>
+
+      <div class="relative flex-auto w-full overflow-auto">
+          @defer (when isVisible; prefetch on timer(1000ms)) {
+            <dynamic-table [table]="table" [data$]="data$" (action)="returnTableAction($event)" [isClickable]="true"></dynamic-table>
+          }
+          @placeholder (minimum 100ms) {
+          <div class="flex w-full justify-center" *ngIf="isSpinnerVisible">
+              <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
+                  <!-- <icons class="" name="spinner"></icons> -->
+              </div>
+              <span class="sr-only">Loading...</span>
+          </div>
+          }
+          @loading (after 100ms; minimum 150ms) {
+          <div>Loading</div>
+          }
+          @error {
+          <div>Error</div>
+          }
+          <!-- <pre class="debug-item-hide my-2 p-4 bg-gradient-45 to-red-500 rounded shadow-lg">{{ (data$ | async) | json }}</pre> -->
+      </div>
+  </div>
+</div>
+            <!-- }
 @placeholder (minimum 100ms) {
   <div class="flex w-full justify-center" *ngIf="isSpinnerVisible">
       <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
