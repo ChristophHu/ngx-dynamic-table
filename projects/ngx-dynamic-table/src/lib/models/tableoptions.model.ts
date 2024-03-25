@@ -6,6 +6,7 @@ export interface Tableoptions {
     columns: Column[]
     columnFilter: string[]
     columnNames: string[]
+    showCheckbox?: boolean
     showCount?: boolean
     showPaginator?: boolean
     sortColumn?: string

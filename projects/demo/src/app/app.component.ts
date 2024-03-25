@@ -58,9 +58,10 @@ export class AppComponent implements OnInit, OnDestroy {
       // { id: '3', name: 'date', header: 'Date', cell: 'date', pipe: { name: DatePipe, args: 'dd.MM.'}, hidden: false, sortable: true }
     ],
     columnFilter: ['date', 'ort'],
-    columnNames: ['name', 'date', 'ort', 'actions'],
+    columnNames: ['count', 'name', 'date', 'ort', 'actions'],
+    showCheckbox: true,
     showCount: true,
-    showPaginator: false,
+    showPaginator: true,
     sortColumn: 'date',
     sortStart: 'asc'
   }
@@ -71,6 +72,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
         break
       case TableActionEnum.EDIT:
+
+        break
+
+      case TableActionEnum.SHOW:
 
         break
       default:

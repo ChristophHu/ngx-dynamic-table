@@ -49,7 +49,12 @@ export class NgxDynamicTableComponent implements OnInit {
   @Input() isClickable: boolean = true
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
 
-  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null
+  // @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null
+  paginator!: MatPaginator;
+  @ViewChild(MatPaginator) set _paginator(paginator: MatPaginator) {
+    this.paginator = paginator;
+    this.dataSource.paginator = this.paginator;
+  }
   @ViewChild(MatSort) sort!: MatSort
 
   private readonly _changePaginator = new BehaviorSubject<boolean>(false)
@@ -57,7 +62,7 @@ export class NgxDynamicTableComponent implements OnInit {
 
   dataSource: any
 
-  pageSize: number = 20
+  pageSize: number = 1
   pageSizeOptions: number[] = [5, 10, 15, 20, 50, 100]
 
   isEditable$: Observable<boolean> = this._dynamicTableService.isEditable$

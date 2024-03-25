@@ -18,21 +18,27 @@
             <dynamic-table [table]="table" [data$]="data$" (action)="returnTableAction($event)" [isClickable]="true"></dynamic-table>
           }
           @placeholder (minimum 100ms) {
-          <div class="flex w-full justify-center" *ngIf="isSpinnerVisible">
-              <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
-                  <!-- <icons class="" name="spinner"></icons> -->
+            <div class="bg-tertiary">
+              <div class="flex w-full justify-center" *ngIf="isSpinnerVisible">
+                <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
+                  Placeholder
+                    <!-- <icons class="" name="spinner"></icons> -->
+                </div>
+                <span class="sr-only">Loading...</span>
               </div>
-              <span class="sr-only">Loading...</span>
-          </div>
+            </div>
           }
           @loading (after 100ms; minimum 150ms) {
-          <div>Loading</div>
+            <div class="h-4 bg-tertiary">Loading</div>
           }
           @error {
-          <div>Error</div>
+            <div class="h-4 bg-tertiary">Error</div>
           }
-          <!-- <pre class="debug-item-hide my-2 p-4 bg-gradient-45 to-red-500 rounded shadow-lg">{{ (data$ | async) | json }}</pre> -->
-      </div>
+          <div class="debug-item-hide bg-tertiary text-dark border-t border-borderline">
+            <pre class="p-4 bg-gradient-45 to-gray-600">{{ (data$ | async) | json }}</pre>
+          </div>
+          <div class="h-4 bg-tertiary border-t border-borderline rounded-b-lg"></div>
+        </div>
   </div>
 </div>
             <!-- }
