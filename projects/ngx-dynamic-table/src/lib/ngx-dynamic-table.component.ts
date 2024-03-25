@@ -49,6 +49,7 @@ export class NgxDynamicTableComponent implements OnInit {
   @Input() table!: Tableoptions
   @Input() data$!: Observable<any[]>
   @Input() isClickable: boolean = true
+  @Input() pageSize: number = 1
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
 
   // @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null
@@ -64,7 +65,6 @@ export class NgxDynamicTableComponent implements OnInit {
 
   dataSource: any
 
-  pageSize: number = 1
   pageSizeOptions: number[] = [5, 10, 15, 20, 50, 100]
 
   isEditable$: Observable<boolean> = this._dynamicTableService.isEditable$
@@ -78,6 +78,7 @@ export class NgxDynamicTableComponent implements OnInit {
       next: (data: any[]) => {  
         if (data && data.length > 0) {
           setTimeout(() => {
+            console.log('pagin', this.paginator)
             if (this.table.showPaginator && this.paginator) {
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'

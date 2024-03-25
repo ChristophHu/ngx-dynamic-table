@@ -75,10 +75,13 @@
         </table>
         <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->
         <mat-paginator
+            *ngIf="table.showPaginator"
             nxtBubblePagination
             [appCustomLength]="dataSource.data.length"
             [length]="dataSource.data.length"
             [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="updatePaginator()"
             >
         </mat-paginator>
     </div>

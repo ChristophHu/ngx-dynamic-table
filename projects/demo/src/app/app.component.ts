@@ -6,11 +6,13 @@ import { Tableoptions } from '../../../ngx-dynamic-table/src/lib/models/tableopt
 import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tableaction.model';
 import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
 import { CommonModule, DatePipe } from '@angular/common';
+import { CircularSpinnerComponent } from '../../../ngx-dynamic-table/src/lib/components/circular-spinner/circular-spinner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CircularSpinnerComponent,
     CommonModule,
     DatePipe,
     NgxDynamicTableComponent,
