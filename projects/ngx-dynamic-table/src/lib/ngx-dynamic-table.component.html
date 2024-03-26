@@ -1,5 +1,6 @@
 <ng-container *ngIf="table && (data$ | async)?.length != 0 && (data$ | async) as data; else noData">
-    <div class="relative flex flex-col w-full bg-tertiary px-2 overflow-auto scrollbar-hide" cdk-scrollable #scrollableContent>
+    <!-- <div class="relative flex flex-col w-full bg-tertiary px-2 overflow-auto scrollbar-hide" cdk-scrollable #scrollableContent> -->
+    <div class="relative left-0 right-0 flex flex-col w-full bg-primary px-2 overflow-auto scrollbar-hide" cdk-scrollable #scrollableContent>
         <table mat-table [dataSource]="dataSource" matSort class="relative w-full">
             <thead>
                 <ng-container matColumnDef="count">
