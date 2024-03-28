@@ -32,7 +32,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor() {
     this.data$ = of([
       { id: '1', name: 'Tim', date: '01.01.2024 00:00:59', ort: 'Berlin' },
-      { id: '2', name: 'Tom', date: '01.01.2023 00:00:59', ort: 'Hamburg' }
+      { id: '2', name: 'Tom', date: '01.01.2023 00:00:59', ort: 'Hamburg' },
+      { id: '3', name: 'Thomas', date: '01.02.2023 00:00:59', ort: 'Dresden' }
     ])
   }
 
