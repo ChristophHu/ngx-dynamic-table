@@ -19,9 +19,7 @@ export class BubblePaginationDirective implements AfterViewInit, OnChanges {
   private bubbleContainerRef!: HTMLElement
   private buttonsRef: HTMLElement[] = []
 
-  constructor(@Host() @Self() @Optional() private readonly matPag: MatPaginator, private elementRef: ElementRef, private renderer: Renderer2) {
-
-  }
+  constructor(@Host() @Self() @Optional() private readonly matPag: MatPaginator, private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!changes?.['appCustomLength']?.firstChange) {
@@ -58,57 +56,57 @@ export class BubblePaginationDirective implements AfterViewInit, OnChanges {
     const previouslyActive = this.buttonsRef[previousIndex]
     const currentActive = this.buttonsRef[newIndex]
 
-    // remove active style from previously active button
-    // console.log('renderer', this.renderer)
-    // console.log('elementRef', this.elementRef)
-    // console.log('previouslyActive', previouslyActive)
+    try {
+      this.renderer.removeClass(previouslyActive, 'nxt-bubble__active')
 
-    this.renderer.removeClass(previouslyActive, 'nxt-bubble__active')
-
-    // add active style to new active button
-    this.renderer.addClass(currentActive, 'nxt-bubble__active')
-
-    // hide all buttons
-    this.buttonsRef.forEach((button) =>
-      this.renderer.setStyle(button, 'display', 'none')
-    )
-
-    // show N previous buttons and X next buttons
-    const renderElements = this.renderButtonsNumber
-    const endDots = newIndex < this.buttonsRef.length - renderElements - 1
-    const startDots = newIndex - renderElements > 0
-
-    const firstButton = this.buttonsRef[0]
-    const lastButton = this.buttonsRef[this.buttonsRef.length - 1]
-
-    // last bubble and dots
-    if (this.showLastButton) {
-      this.renderer.setStyle(this.dotsEndRef, 'display', endDots ? 'block' : 'none')
-      this.renderer.setStyle(lastButton, 'display', endDots ? 'flex' : 'none')
-    }
-
-    // first bubble and dots
-    if (this.showFirstButton) {
-      this.renderer.setStyle(
-        this.dotsStartRef,
-        'display',
-        startDots ? 'block' : 'none'
+      // add active style to new active button
+      this.renderer.addClass(currentActive, 'nxt-bubble__active')
+  
+      // hide all buttons
+      this.buttonsRef.forEach((button) =>
+        this.renderer.setStyle(button, 'display', 'none')
       )
-      this.renderer.setStyle(firstButton, 'display', startDots ? 'flex' : 'none')
+  
+      // show N previous buttons and X next buttons
+      const renderElements = this.renderButtonsNumber
+      const endDots = newIndex < this.buttonsRef.length - renderElements - 1
+      const startDots = newIndex - renderElements > 0
+  
+      const firstButton = this.buttonsRef[0]
+      const lastButton = this.buttonsRef[this.buttonsRef.length - 1]
+  
+      // last bubble and dots
+      if (this.showLastButton) {
+        this.renderer.setStyle(this.dotsEndRef, 'display', endDots ? 'block' : 'none')
+        this.renderer.setStyle(lastButton, 'display', endDots ? 'flex' : 'none')
+      }
+  
+      // first bubble and dots
+      if (this.showFirstButton) {
+        this.renderer.setStyle(
+          this.dotsStartRef,
+          'display',
+          startDots ? 'block' : 'none'
+        )
+        this.renderer.setStyle(firstButton, 'display', startDots ? 'flex' : 'none')
+      }
+  
+      // resolve starting and ending index to show buttons
+      const startingIndex = startDots ? newIndex - renderElements : 0
+  
+      const endingIndex = endDots
+        ? newIndex + renderElements
+        : this.buttonsRef.length - 1
+  
+      // display starting buttons
+      for (let i = startingIndex; i <= endingIndex; i++) {
+        const button = this.buttonsRef[i]
+        this.renderer.setStyle(button, 'display', 'flex')
+      }  
+    } catch (error) {
+      throw Error('test')
     }
-
-    // resolve starting and ending index to show buttons
-    const startingIndex = startDots ? newIndex - renderElements : 0
-
-    const endingIndex = endDots
-      ? newIndex + renderElements
-      : this.buttonsRef.length - 1
-
-    // display starting buttons
-    for (let i = startingIndex; i <= endingIndex; i++) {
-      const button = this.buttonsRef[i]
-      this.renderer.setStyle(button, 'display', 'flex')
-    }
+    
   }
 
   private styleDefaultPagination() {

@@ -1,7 +1,7 @@
 import { animate, sequence, style, transition, trigger } from '@angular/animations'
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core'
 import { Tableoptions } from './models/tableoptions.model'
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject, Observable, of } from 'rxjs'
 import { TableActionReturn } from './models/tableaction.model'
 import { MatSort, MatSortModule, MatSortable } from '@angular/material/sort'
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
@@ -49,7 +49,7 @@ export class NgxDynamicTableComponent implements OnInit {
   @Input() table!: Tableoptions
   @Input() data$!: Observable<any[]>
   @Input() isClickable: boolean = true
-  @Input() pageSize: number = 1
+  @Input() pageSize: number = 2
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
 
   // @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null
@@ -60,13 +60,14 @@ export class NgxDynamicTableComponent implements OnInit {
   }
   @ViewChild(MatSort) sort!: MatSort
 
-  private readonly _changePaginator = new BehaviorSubject<boolean>(false)
+  private readonly _changePaginator = new BehaviorSubject<boolean>(false) 
   changePaginator$: Observable<boolean> = this._changePaginator.asObservable()
 
+  private readonly _multipage = new BehaviorSubject<boolean>(false)
+  _multipage$: Observable<boolean> = this._multipage.asObservable()
+
   dataSource: any
-
-  pageSizeOptions: number[] = [5, 10, 15, 20, 50, 100]
-
+  pageSizeOptions: number[] = [1, 5, 10, 15, 20, 50, 100]
   isEditable$: Observable<boolean> = this._dynamicTableService.isEditable$
 
   constructor(private _dynamicTableService: DynamicTableService) {
@@ -78,8 +79,10 @@ export class NgxDynamicTableComponent implements OnInit {
       next: (data: any[]) => {  
         if (data && data.length > 0) {
           setTimeout(() => {
-            console.log('pagin', this.paginator)
             if (this.table.showPaginator && this.paginator) {
+              console.log('data', this.table)
+              console.log('pagesize', this.paginator.length)
+              if (this.paginator.pageSize > 1) this._multipage.next(true)
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'
               this.paginator._intl.previousPageLabel = 'Vorherige'
