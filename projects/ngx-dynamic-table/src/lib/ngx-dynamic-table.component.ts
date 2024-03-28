@@ -14,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatMenuModule } from '@angular/material/menu'
 import { ScrollIndicatorComponent } from './components/scroll-indicator/scroll-indicator.component'
 import { StickyDirective } from './directives/sticky/sticky.directive'
-import { BubblePaginationDirective } from './directives/bubble-pagination/bubble-pagination.directive'
+import { MobilePaginationDirective } from './directives/mobile-pagination/mobile-pagination.directive'
+import { IconsComponent } from './components/icons/icons.component'
 
 export const rowsAnimation = trigger('rowsAnimation', [
   transition('void => *', [
@@ -33,11 +34,12 @@ export const rowsAnimation = trigger('rowsAnimation', [
     CommonModule,
     DynamicPipe,
     FormsModule,
+    IconsComponent,
     MatMenuModule,
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    BubblePaginationDirective,
+    MobilePaginationDirective,
     ReactiveFormsModule,
     ScrollIndicatorComponent,
     StickyDirective
@@ -48,8 +50,8 @@ export const rowsAnimation = trigger('rowsAnimation', [
 export class NgxDynamicTableComponent implements OnInit {
   @Input() table!: Tableoptions
   @Input() data$!: Observable<any[]>
-  @Input() isClickable: boolean = true
-  @Input() pageSize: number = 2
+  @Input() isEditableInTable: boolean = false
+  @Input() pageSize: number = 10
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
 
   // @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null
@@ -63,9 +65,6 @@ export class NgxDynamicTableComponent implements OnInit {
   private readonly _changePaginator = new BehaviorSubject<boolean>(false) 
   changePaginator$: Observable<boolean> = this._changePaginator.asObservable()
 
-  private readonly _multipage = new BehaviorSubject<boolean>(false)
-  _multipage$: Observable<boolean> = this._multipage.asObservable()
-
   dataSource: any
   pageSizeOptions: number[] = [1, 5, 10, 15, 20, 50, 100]
   isEditable$: Observable<boolean> = this._dynamicTableService.isEditable$
@@ -77,12 +76,10 @@ export class NgxDynamicTableComponent implements OnInit {
   ngOnInit(): void {
     this.data$.subscribe({
       next: (data: any[]) => {  
+        console.log('data', data)
         if (data && data.length > 0) {
           setTimeout(() => {
             if (this.table.showPaginator && this.paginator) {
-              console.log('data', this.table)
-              console.log('pagesize', this.paginator.length)
-              if (this.paginator.pageSize > 1) this._multipage.next(true)
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'
               this.paginator._intl.previousPageLabel = 'Vorherige'
@@ -138,10 +135,6 @@ export class NgxDynamicTableComponent implements OnInit {
     this._changePaginator.next(true)
   }
 
-  clickAction(id: string, action: TableActionEnum) {
-    this.action.emit({ id, action })
-  }
-
   isSticky(id: string) {
     const buttonToggleGroup: string[] = ['count', 'name']
     return (buttonToggleGroup || []).indexOf(id) !== -1
@@ -151,15 +144,25 @@ export class NgxDynamicTableComponent implements OnInit {
     this.dataSource.filter = filterText.trim().toLowerCase()
   }
 
-  show(row: any) {
-    if (this.isClickable) {
-      let action: TableActionEnum = 2
-      this.action.emit({ row, action })
-    }
+  clickAction(id: string, action: TableActionEnum) {
+    this.action.emit({ id, action })
   }
   create() {
-    let action: TableActionEnum = 0
-    this.action.emit({ id: '', action })
+    this.action.emit({ id: '', action: TableActionEnum.CREATE })
   }
-
+  edit(row: any) {
+    if (!this.isEditableInTable) this.action.emit({ row, action: TableActionEnum.EDIT })
+  }
+  delete(row: any) {
+    this.action.emit({ row, action: TableActionEnum.DELETE })
+  }
+  check(row: any) {
+    this.action.emit({ row, action: TableActionEnum.CHECK })
+  }
+  checkAll() {
+    this.action.emit({ action: TableActionEnum.CHECKALL })
+  }
+  refresh() {
+    this.action.emit({ action: TableActionEnum.REFRESH })
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxDynamicTableComponent } from '../../../ngx-dynamic-table/src/lib/ngx-dynamic-table.component';
-import { Observable, Subject, of, timeout } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, delay, of, timeout } from 'rxjs';
 import { Tableoptions } from '../../../ngx-dynamic-table/src/lib/models/tableoptions.model';
 import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tableaction.model';
 import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
@@ -25,16 +25,17 @@ export class AppComponent implements OnInit, OnDestroy {
   isVisible: boolean = false
   isSpinnerVisible: boolean = true;
 
-  data$: Observable<any[]>
+  private readonly _data = new BehaviorSubject<any[]>([])
+  data$: Observable<any[]> = this._data.asObservable()
+  // data$: Observable<any[]>
 
   destroy$: Subject<boolean> = new Subject<boolean>()
 
   constructor() {
-    this.data$ = of([
-      { id: '1', name: 'Tim', date: '01.01.2024 00:00:59', ort: 'Berlin' },
-      { id: '2', name: 'Tom', date: '01.01.2023 00:00:59', ort: 'Hamburg' },
-      { id: '3', name: 'Thomas', date: '01.02.2023 00:00:59', ort: 'Dresden' }
-    ])
+    // this.data$.subscribe(data => {
+    //   console.log(data)
+    // })
+    this.setData()
   }
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log('destroy')
     this.destroy$.next(true)
     this.destroy$.unsubscribe()
   }
@@ -51,7 +53,8 @@ export class AppComponent implements OnInit, OnDestroy {
   table: Tableoptions = {
     actions: [
       { name: 'delete', icon: 'trash', action: 1 },
-      { name: 'edit', icon: 'edit', action: 2 }
+      { name: 'edit', icon: 'edit', action: 2 },
+      { name: 'show', icon: 'eye', action: 4 }
     ],
     columns: [
       { id: '1', name: 'id', header: 'ID', cell: 'id', hidden: true, sortable: true },
@@ -61,7 +64,7 @@ export class AppComponent implements OnInit, OnDestroy {
       // { id: '3', name: 'date', header: 'Date', cell: 'date', pipe: { name: DatePipe, args: 'dd.MM.'}, hidden: false, sortable: true }
     ],
     columnFilter: ['date', 'ort'],
-    columnNames: ['count', 'name', 'date', 'ort', 'actions'],
+    columnNames: ['checkbox', 'count', 'name', 'date', 'ort', 'actions'],
     showCheckbox: true,
     showCount: true,
     showPaginator: true,
@@ -72,17 +75,40 @@ export class AppComponent implements OnInit, OnDestroy {
   returnTableAction(event: TableActionReturn) {
     switch (event.action) {
       case TableActionEnum.DELETE:
-
+        console.log('delete row')
         break
       case TableActionEnum.EDIT:
-
+        console.log('edit row')
         break
 
       case TableActionEnum.SHOW:
+        console.log('show row')
+        break
 
+      case TableActionEnum.REFRESH:
+        console.log('refresh table')
+        // this.data$.pipe(delay(500)) = store.dispatch(fetchData())
+        this.setData()
+        break
+
+      case TableActionEnum.CHECK:
+        console.log('check', event.row)
+        break
+      case TableActionEnum.CHECKALL:
+        console.log('check all')
         break
       default:
 
     }
+  }
+
+  setData() {
+    this._data.next([
+      { id: '1', name: 'Tim', date: '01.01.2024 00:00:59', ort: 'Berlin', checked: false },
+      { id: '2', name: 'Tom', date: '01.01.2023 00:00:59', ort: 'Hamburg', checked: true },
+      { id: '3', name: 'Thomas', date: '01.02.2023 00:00:59', ort: 'Dresden', checked: true },
+      { id: '4', name: 'Martin', date: '03.02.2023 00:00:59', ort: 'München', checked: false },
+      { id: '5', name: 'Markus', date: '04.02.2023 00:00:59', ort: 'Köln', checked: false }
+    ])
   }
 }

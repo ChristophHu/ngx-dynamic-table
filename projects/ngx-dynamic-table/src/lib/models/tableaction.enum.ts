@@ -3,7 +3,10 @@ export enum TableActionEnum {
     DELETE = 1,
     EDIT = 2,
     SHOW = 4,
-    QRCODE = 8,
-    TANK = 16,
-    CHECKLIST = 32
+    REFRESH = 8,
+    CHECK,
+    CHECKALL = 128,
+    QRCODE = 16,
+    TANK = 32,
+    CHECKLIST = 64
 }

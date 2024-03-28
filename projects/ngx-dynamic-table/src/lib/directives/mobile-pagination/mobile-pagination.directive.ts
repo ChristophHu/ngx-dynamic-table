@@ -3,10 +3,10 @@ import { MatPaginator } from '@angular/material/paginator'
 import { map, startWith } from 'rxjs'
 
 @Directive({
-  selector: '[nxtBubblePagination]',
+  selector: '[nxtMobilePagination]',
   standalone: true
 })
-export class BubblePaginationDirective implements AfterViewInit, OnChanges {
+export class MobilePaginationDirective implements AfterViewInit, OnChanges {
   @Output() pageIndexChangeEmitter: EventEmitter<number> = new EventEmitter<number>()
   @Input() showFirstButton = true
   @Input() showLastButton = true
@@ -104,7 +104,7 @@ export class BubblePaginationDirective implements AfterViewInit, OnChanges {
         this.renderer.setStyle(button, 'display', 'flex')
       }  
     } catch (error) {
-      throw Error('test')
+      console.warn('NgxDynamicTableComponent: MobilePaginator got only one page -> Paginator disabled')
     }
     
   }
