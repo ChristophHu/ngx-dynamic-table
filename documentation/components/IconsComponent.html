@@ -425,7 +425,7 @@ import { icons } from &#x27;./icons&#x27;;
 export class IconsComponent {
     /**
    * The iconname to get from icons.ts to set to the innerHTML.
-   * @type {string} name
+   * @type {string}
    */
   @Input() set name(iconName: string) {
     this.renderer.setProperty(this.element.nativeElement,&#x27;innerHTML&#x27;, icons[iconName] || null)
