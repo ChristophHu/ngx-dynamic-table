@@ -1,13 +1,15 @@
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IconsComponent } from '../icons/icons.component';
 
 @Component({
   selector: 'scroll-indicator',
   standalone: true,
   imports: [
     NgIf,
-    NgStyle
+    NgStyle,
+    IconsComponent
   ],
   templateUrl: './scroll-indicator.component.html',
   styleUrls: ['./scroll-indicator.component.sass']

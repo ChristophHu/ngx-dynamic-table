@@ -17,17 +17,26 @@
 .mat-mdc-header-row
     @apply bg-tertiary text-darker #{!important}
 
+// .mat-mdc-row
+//     @apply border-t border-borderline #{!important}
+
+// .mdc-data-table__row
+//     @apply border-t border-borderline #{!important}
+
 .mat-mdc-header-cell
-    @apply border-none border-b border-borderline border-2 #{!important}
+    @apply border-none border-b border-2 border-borderline border-2 #{!important}
+
+.mat-column-checkbox
+    @apply m-0 p-0 w-8 #{!important}
 
 .mat-column-count
     @apply bg-transparent #{!important}
 
-// .mat-mdc-cell
-//     @apply border-secondary #{!important}
-
 .mat-mdc-row
     @apply bg-tertiary text-dark #{!important}
+
+.mat-mdc-cell
+    @apply border-t border-light #{!important}
 
 // paginator
 .mat-mdc-paginator
@@ -48,11 +57,11 @@
     .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing
         @apply border-borderline border #{!important}
 
-    .mat-paginator-navigation-previous
-        display: none !important
+    // .mat-paginator-navigation-previous
+    //     display: none !important
 
-    .mat-paginator-navigation-next
-        display: none !important
+    // .mat-paginator-navigation-next
+    //     display: none !important
 
 .mat-mdc-paginator-icon
     @apply fill-none text-dark #{!important}
