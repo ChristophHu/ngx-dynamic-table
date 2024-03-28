@@ -22,6 +22,12 @@ import { CircularSpinnerComponent } from '../../../ngx-dynamic-table/src/lib/com
   styleUrl: './app.component.sass'
 })
 export class AppComponent implements OnInit, OnDestroy {
+  /**
+   * The isVisible property belongs to the data of the dynamic-table.
+   * It is used to show or hide the table, depended on the data.
+   * 
+   * @type {boolean}
+   */
   isVisible: boolean = false
   isSpinnerVisible: boolean = true;
 
@@ -46,7 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe()
   }
 
-  table: Tableoptions = {
+  tableoptions: Tableoptions = {
     actions: [
       { name: 'delete', icon: 'trash', action: 1 },
       { name: 'edit', icon: 'edit', action: 2 },
@@ -67,6 +73,10 @@ export class AppComponent implements OnInit, OnDestroy {
     sortStart: 'asc'
   }
 
+  /**
+ * @param {TableActionReturn} event  The target to process
+ * @returns The processed target number
+ */
   returnTableAction(event: TableActionReturn) {
     switch (event.action) {
       case TableActionEnum.DELETE:
@@ -93,6 +103,9 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * @ignore
+   */
   setData() {
     this._data.next([
       { id: '1', name: 'Tim', date: '01.01.2024 00:00:59', ort: 'Berlin', checked: false },

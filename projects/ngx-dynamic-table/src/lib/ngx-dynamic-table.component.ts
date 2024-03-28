@@ -27,6 +27,13 @@ export const rowsAnimation = trigger('rowsAnimation', [
   ])
 ])
 
+/**
+ * This component to demonstrate Compodoc documentation.
+ * It displays a greeting message.
+ * 
+ * @example
+ * <dynamic-table [table]="table" [data$]="data$" [pageSize]="4" (action)="returnTableAction($event)" [isEditableInTable]="true"></dynamic-table>
+ */
 @Component({
   selector: 'dynamic-table',
   standalone: true,
@@ -48,13 +55,20 @@ export const rowsAnimation = trigger('rowsAnimation', [
   styleUrls: ['./ngx-dynamic-table.component.sass']
 })
 export class NgxDynamicTableComponent implements OnInit {
-  @Input() table!: Tableoptions
+  /**
+   * The name to be displayed in the greeting.
+   * @type {string}
+   */
+  @Input() tableoptions!: Tableoptions
   @Input() data$!: Observable<any[]>
   @Input() isEditableInTable: boolean = false
   @Input() pageSize: number = 10
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
 
-  // @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null
+  /**
+   * @description default class of NgxDynamicTableComponent
+   * @memberof NgxDynamicTableComponent
+   */
   paginator!: MatPaginator
   @ViewChild(MatPaginator) set _paginator(paginator: MatPaginator) {
     this.paginator = paginator
@@ -79,7 +93,7 @@ export class NgxDynamicTableComponent implements OnInit {
         console.log('data', data)
         if (data && data.length > 0) {
           setTimeout(() => {
-            if (this.table.showPaginator && this.paginator) {
+            if (this.tableoptions.showPaginator && this.paginator) {
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'
               this.paginator._intl.previousPageLabel = 'Vorherige'
@@ -87,8 +101,8 @@ export class NgxDynamicTableComponent implements OnInit {
               this.dataSource.paginator = this.paginator
             }
   
-            if (this.table.sortColumn && this.table.sortStart) {
-              if (this.sort != undefined) this.sort.sort(({ id: this.table.sortColumn, start: this.table.sortStart }) as MatSortable)
+            if (this.tableoptions.sortColumn && this.tableoptions.sortStart) {
+              if (this.sort != undefined) this.sort.sort(({ id: this.tableoptions.sortColumn, start: this.tableoptions.sortStart }) as MatSortable)
             }
             this.dataSource.sort = this.sort
             this.dataSource.data = data
@@ -103,7 +117,7 @@ export class NgxDynamicTableComponent implements OnInit {
   
             this.dataSource.filterPredicate = (data: any, filter: string) => {
               let match: boolean = false
-              this.table.columnFilter.forEach((element: string) => {
+              this.tableoptions.columnFilter.forEach((element: string) => {
                 match = (match || data[element].trim().toLowerCase().includes(filter)) // ToDo: error on filter "tr" in klarmeldung
               })
               return match
@@ -144,6 +158,14 @@ export class NgxDynamicTableComponent implements OnInit {
     this.dataSource.filter = filterText.trim().toLowerCase()
   }
 
+  /**
+   * This function returns to returnTableAction by using @Output().
+   * @param {string}  id - The first number.
+   * @param {enum}    action - The second number.
+   * 
+   * @example:
+   * <button mat-menu-item class="!flex items-center" (click)="clickAction(element.id, action.action)">
+   */
   clickAction(id: string, action: TableActionEnum) {
     this.action.emit({ id, action })
   }

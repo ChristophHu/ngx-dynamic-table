@@ -9,7 +9,10 @@
     "test": "ng test",
     "twpreprocess": "tailwindcss -c ./projects/demo/tailwind.config.js -o ./projects/ngx-dynamic-table/src/lib/tailwind.scss & ng build ngx-notifications",
     "preprocess": "ng build ngx-dynamic-table",
-    "publish": "cd dist/ngx-dynamic-table && npm publish --access public"
+    "publish": "cd dist/ngx-dynamic-table && npm publish --access public",
+    "compodoc:build": "compodoc -p projects/demo/tsconfig.app.json -c projects/demo/tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +34,7 @@
     "@angular-devkit/build-angular": "^17.2.1",
     "@angular/cli": "^17.2.0",
     "@angular/compiler-cli": "^17.2.0",
+    "@compodoc/compodoc": "^1.1.23",
     "@types/jasmine": "~5.1.0",
     "autoprefixer": "^10.4.19",
     "jasmine-core": "~5.1.0",
