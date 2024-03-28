@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxDynamicTableComponent } from '../../../ngx-dynamic-table/src/lib/ngx-dynamic-table.component';
-import { BehaviorSubject, Observable, Subject, delay, of, timeout } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Tableoptions } from '../../../ngx-dynamic-table/src/lib/models/tableoptions.model';
 import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tableaction.model';
 import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
@@ -27,14 +27,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private readonly _data = new BehaviorSubject<any[]>([])
   data$: Observable<any[]> = this._data.asObservable()
-  // data$: Observable<any[]>
 
   destroy$: Subject<boolean> = new Subject<boolean>()
 
   constructor() {
-    // this.data$.subscribe(data => {
-    //   console.log(data)
-    // })
     this.setData()
   }
 
@@ -61,7 +57,6 @@ export class AppComponent implements OnInit, OnDestroy {
       { id: '2', name: 'name', header: 'Name', cell: 'name', hidden: false, sortable: true },
       { id: '3', name: 'date', header: 'Datum/Zeit', cell: 'date', pipe: { name: DatePipe, args: 'dd.MM.YYYY HH:mm:ss'}, hidden: false, sortable: true },
       { id: '4', name: 'ort', header: 'Ort', cell: 'ort', hidden: false, sortable: true },
-      // { id: '3', name: 'date', header: 'Date', cell: 'date', pipe: { name: DatePipe, args: 'dd.MM.'}, hidden: false, sortable: true }
     ],
     columnFilter: ['date', 'ort'],
     columnNames: ['checkbox', 'count', 'name', 'date', 'ort', 'actions'],
@@ -80,25 +75,21 @@ export class AppComponent implements OnInit, OnDestroy {
       case TableActionEnum.EDIT:
         console.log('edit row')
         break
-
       case TableActionEnum.SHOW:
         console.log('show row')
         break
-
       case TableActionEnum.REFRESH:
         console.log('refresh table')
-        // this.data$.pipe(delay(500)) = store.dispatch(fetchData())
         this.setData()
         break
-
       case TableActionEnum.CHECK:
-        console.log('check', event.row)
+        console.log('check row', event.row)
         break
       case TableActionEnum.CHECKALL:
-        console.log('check all')
+        console.log('check all rows')
         break
       default:
-
+        console.log('default action')
     }
   }
 
