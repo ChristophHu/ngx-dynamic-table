@@ -1,0 +1,348 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-dynamic-table documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ngx-dynamic-table documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#appConfig" title="projects/demo/src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(projects/.../app.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#icons" title="projects/ngx-dynamic-table/src/lib/components/icons/icons.ts" ><b>icons</b>&nbsp;&nbsp;&nbsp;(projects/.../icons.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#normalizeSize" title="projects/ngx-dynamic-table/src/lib/components/circular-spinner/spinner.ts" ><b>normalizeSize</b>&nbsp;&nbsp;&nbsp;(projects/.../spinner.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#rowsAnimation" title="projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts" ><b>rowsAnimation</b>&nbsp;&nbsp;&nbsp;(projects/.../ngx-dynamic-table.component.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>projects/demo/src/app/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ApplicationConfig</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  providers: [
+    provideAnimations(),
+    provideRouter(routes)
+  ]
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ngx-dynamic-table/src/lib/components/icons/icons.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="icons"></a>
+                    <span class="name">
+                        <span ><b>icons</b></span>
+                        <a href="#icons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    &#x27;add&#x27;                   : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M12 4v16m8-8H4&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;alert-triangle&#x27;        : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M12 9v2m0 4v.01&quot; /&gt;&lt;path d&#x3D;&quot;M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;edit&#x27;                  : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3&quot; /&gt;&lt;path d&#x3D;&quot;M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3&quot; /&gt;&lt;line x1&#x3D;&quot;16&quot; y1&#x3D;&quot;5&quot; x2&#x3D;&quot;19&quot; y2&#x3D;&quot;8&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;check&#x27;                 : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M5 13l4 4L19 7&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;dot&#x27;                   : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;currentFill&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;4&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;dots&#x27;                  : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;circle cx&#x3D;&quot;5&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;1&quot; /&gt;&lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;1&quot; /&gt;&lt;circle cx&#x3D;&quot;19&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;1&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;dots-horizontal&#x27;       : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;dots-vertical&#x27;         : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;currentFill&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;12&quot; r&#x3D;&quot;1&quot; /&gt;&lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;19&quot; r&#x3D;&quot;1&quot; /&gt;&lt;circle cx&#x3D;&quot;12&quot; cy&#x3D;&quot;5&quot; r&#x3D;&quot;1&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;eye&#x27;                   : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M15 12a3 3 0 11-6 0 3 3 0 016 0z&quot; /&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;eye-off&#x27;               : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;filter&#x27;                : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;list&#x27;                  : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;line x1&#x3D;&quot;9&quot; y1&#x3D;&quot;6&quot; x2&#x3D;&quot;20&quot; y2&#x3D;&quot;6&quot; /&gt;&lt;line x1&#x3D;&quot;9&quot; y1&#x3D;&quot;12&quot; x2&#x3D;&quot;20&quot; y2&#x3D;&quot;12&quot; /&gt;&lt;line x1&#x3D;&quot;9&quot; y1&#x3D;&quot;18&quot; x2&#x3D;&quot;20&quot; y2&#x3D;&quot;18&quot; /&gt;&lt;line x1&#x3D;&quot;5&quot; y1&#x3D;&quot;6&quot; x2&#x3D;&quot;5&quot; y2&#x3D;&quot;6.01&quot; /&gt;&lt;line x1&#x3D;&quot;5&quot; y1&#x3D;&quot;12&quot; x2&#x3D;&quot;5&quot; y2&#x3D;&quot;12.01&quot; /&gt;&lt;line x1&#x3D;&quot;5&quot; y1&#x3D;&quot;18&quot; x2&#x3D;&quot;5&quot; y2&#x3D;&quot;18.01&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;list-check&#x27;            : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M3.5 5.5l1.5 1.5l2.5 -2.5&quot; /&gt;&lt;path d&#x3D;&quot;M3.5 11.5l1.5 1.5l2.5 -2.5&quot; /&gt;&lt;path d&#x3D;&quot;M3.5 17.5l1.5 1.5l2.5 -2.5&quot; /&gt;&lt;line x1&#x3D;&quot;11&quot; y1&#x3D;&quot;6&quot; x2&#x3D;&quot;20&quot; y2&#x3D;&quot;6&quot; /&gt;&lt;line x1&#x3D;&quot;11&quot; y1&#x3D;&quot;12&quot; x2&#x3D;&quot;20&quot; y2&#x3D;&quot;12&quot; /&gt;&lt;line x1&#x3D;&quot;11&quot; y1&#x3D;&quot;18&quot; x2&#x3D;&quot;20&quot; y2&#x3D;&quot;18&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;list-details&#x27;          : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M13 5h8&quot; /&gt;&lt;path d&#x3D;&quot;M13 9h5&quot; /&gt;&lt;path d&#x3D;&quot;M13 15h8&quot; /&gt;&lt;path d&#x3D;&quot;M13 19h5&quot; /&gt;&lt;rect x&#x3D;&quot;3&quot; y&#x3D;&quot;4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;6&quot; rx&#x3D;&quot;1&quot; /&gt;&lt;rect x&#x3D;&quot;3&quot; y&#x3D;&quot;14&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;6&quot; rx&#x3D;&quot;1&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;pdf&#x27;                   : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M14 3v4a1 1 0 0 0 1 1h4&quot; /&gt;&lt;path d&#x3D;&quot;M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4&quot; /&gt;&lt;path d&#x3D;&quot;M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6&quot; /&gt;&lt;path d&#x3D;&quot;M17 18h2&quot; /&gt;&lt;path d&#x3D;&quot;M20 15h-3v6&quot; /&gt;&lt;path d&#x3D;&quot;M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;pencil&#x27;                : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4&quot; /&gt;&lt;path d&#x3D;&quot;M13.5 6.5l4 4&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;qrcode&#x27;                : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;refresh&#x27;               : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;search&#x27;                : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;settings&#x27;              : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z&quot; /&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M15 12a3 3 0 11-6 0 3 3 0 016 0z&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;share&#x27;                 : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0&quot; /&gt;&lt;path d&#x3D;&quot;M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0&quot; /&gt;&lt;path d&#x3D;&quot;M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0&quot; /&gt;&lt;path d&#x3D;&quot;M8.7 10.7l6.6 -3.4&quot; /&gt;&lt;path d&#x3D;&quot;M8.7 13.3l6.6 3.4&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;sort-ascending&#x27;        : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;line x1&#x3D;&quot;4&quot; y1&#x3D;&quot;6&quot; x2&#x3D;&quot;11&quot; y2&#x3D;&quot;6&quot; /&gt;&lt;line x1&#x3D;&quot;4&quot; y1&#x3D;&quot;12&quot; x2&#x3D;&quot;11&quot; y2&#x3D;&quot;12&quot; /&gt;&lt;line x1&#x3D;&quot;4&quot; y1&#x3D;&quot;18&quot; x2&#x3D;&quot;13&quot; y2&#x3D;&quot;18&quot; /&gt;&lt;polyline points&#x3D;&quot;15 9 18 6 21 9&quot; /&gt;&lt;line x1&#x3D;&quot;18&quot; y1&#x3D;&quot;6&quot; x2&#x3D;&quot;18&quot; y2&#x3D;&quot;18&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;sort-descending&#x27;       : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;line x1&#x3D;&quot;4&quot; y1&#x3D;&quot;6&quot; x2&#x3D;&quot;13&quot; y2&#x3D;&quot;6&quot; /&gt;&lt;line x1&#x3D;&quot;4&quot; y1&#x3D;&quot;12&quot; x2&#x3D;&quot;11&quot; y2&#x3D;&quot;12&quot; /&gt;&lt;line x1&#x3D;&quot;4&quot; y1&#x3D;&quot;18&quot; x2&#x3D;&quot;11&quot; y2&#x3D;&quot;18&quot; /&gt;&lt;polyline points&#x3D;&quot;15 15 18 18 21 15&quot; /&gt;&lt;line x1&#x3D;&quot;18&quot; y1&#x3D;&quot;6&quot; x2&#x3D;&quot;18&quot; y2&#x3D;&quot;18&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;sort-ascending-letters&#x27;: &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M15 10v-5c0 -1.38 .62 -2 2 -2s2 .62 2 2v5m0 -3h-4&quot; /&gt;&lt;path d&#x3D;&quot;M19 21h-4l4 -7h-4&quot; /&gt;&lt;path d&#x3D;&quot;M4 15l3 3l3 -3&quot; /&gt;&lt;path d&#x3D;&quot;M7 6v12&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;sort-descending-letters&#x27;: &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;path d&#x3D;&quot;M15 21v-5c0 -1.38 .62 -2 2 -2s2 .62 2 2v5m0 -3h-4&quot; /&gt;&lt;path d&#x3D;&quot;M19 10h-4l4 -7h-4&quot; /&gt;&lt;path d&#x3D;&quot;M4 15l3 3l3 -3&quot; /&gt;&lt;path d&#x3D;&quot;M7 6v12&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;spinner&#x27;               : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 100 101&quot; fill&#x3D;&quot;currentFill&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path d&#x3D;&quot;M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z&quot; fill&#x3D;&quot;currentColor&quot;/&gt;&lt;path d&#x3D;&quot;M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z&quot; fill&#x3D;&quot;currentFill&quot;/&gt;&lt;/svg&gt;&#x60;,
+    // &#x27;spinner2&#x27;              : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; class&#x3D;&quot;animate-spin&quot; viewBox&#x3D;&quot;0 0 100 101&quot; fill&#x3D;&quot;currentFill&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;path d&#x3D;&quot;M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z&quot; fill&#x3D;&quot;currentColor&quot;/&gt;&lt;path d&#x3D;&quot;M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z&quot; fill&#x3D;&quot;currentFill&quot;/&gt;&lt;/svg&gt;&#x60;,
+    &#x27;table&#x27;                 : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;&gt;&lt;path stroke&#x3D;&quot;none&quot; d&#x3D;&quot;M0 0h24v24H0z&quot; fill&#x3D;&quot;none&quot;/&gt;&lt;rect x&#x3D;&quot;4&quot; y&#x3D;&quot;4&quot; width&#x3D;&quot;16&quot; height&#x3D;&quot;16&quot; rx&#x3D;&quot;2&quot; /&gt;&lt;line x1&#x3D;&quot;4&quot; y1&#x3D;&quot;10&quot; x2&#x3D;&quot;20&quot; y2&#x3D;&quot;10&quot; /&gt;&lt;line x1&#x3D;&quot;10&quot; y1&#x3D;&quot;4&quot; x2&#x3D;&quot;10&quot; y2&#x3D;&quot;20&quot; /&gt;&lt;/svg&gt;&#x60;,
+    &#x27;trash&#x27;                 : &#x60;&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; stroke&#x3D;&quot;currentColor&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; d&#x3D;&quot;M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16&quot; /&gt;&lt;/svg&gt;&#x60;, 
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ngx-dynamic-table/src/lib/components/circular-spinner/spinner.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="normalizeSize"></a>
+                    <span class="name">
+                        <span ><b>normalizeSize</b></span>
+                        <a href="#normalizeSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(size: number | string) &#x3D;&gt; (parseFloat(size.toString()).toString() &#x3D;&#x3D;&#x3D; size.toString() ? &#x60;${size}px&#x60; : size.toString())</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rowsAnimation"></a>
+                    <span class="name">
+                        <span ><b>rowsAnimation</b></span>
+                        <a href="#rowsAnimation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>trigger(&#x27;rowsAnimation&#x27;, [
+  transition(&#x27;void &#x3D;&gt; *&#x27;, [
+    style({ height: &#x27;*&#x27;, opacity: &#x27;0&#x27;, transform: &#x27;translateX(-550px)&#x27;, &#x27;box-shadow&#x27;: &#x27;none&#x27; }),
+    sequence([
+      animate(&quot;.35s ease&quot;, style({ height: &#x27;*&#x27;, opacity: &#x27;.2&#x27;, transform: &#x27;translateX(0)&#x27;, &#x27;box-shadow&#x27;: &#x27;none&#x27;  })),
+      animate(&quot;.35s ease&quot;, style({ height: &#x27;*&#x27;, opacity: 1, transform: &#x27;translateX(0)&#x27; }))
+    ])
+  ])
+])</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

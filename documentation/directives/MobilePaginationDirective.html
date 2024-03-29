@@ -1,0 +1,1509 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-dynamic-table documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ngx-dynamic-table documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content directive">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >MobilePaginationDirective</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts</code>
+        </p>
+
+
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>AfterViewInit</code>
+                        <code>OnChanges</code>
+            </p>
+
+
+        <section data-compodoc="block-metadata">
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover metadata">
+                <tbody>
+
+                    <tr>
+                        <td class="col-md-3">Selector</td>
+                        <td class="col-md-9"><code>[nxtMobilePagination]</code></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-3">Standalone</td>
+                        <td class="col-md-9"><code>true</code></td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#bubbleContainerRef" >bubbleContainerRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buttonsRef" >buttonsRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dotsEndRef" >dotsEndRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#dotsStartRef" >dotsStartRef</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildButtons" >buildButtons</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#changeActiveButtonStyles" >changeActiveButtonStyles</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createBubbleDivRef" >createBubbleDivRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createButton" >createButton</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createDotsElement" >createDotsElement</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#removeButtons" >removeButtons</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderButtons" >renderButtons</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#styleDefaultPagination" >styleDefaultPagination</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#switchPage" >switchPage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appCustomLength" >appCustomLength</a>
+                            </li>
+                            <li>
+                                <a href="#hideDefaultArrows" >hideDefaultArrows</a>
+                            </li>
+                            <li>
+                                <a href="#renderButtonsNumber" >renderButtonsNumber</a>
+                            </li>
+                            <li>
+                                <a href="#showFirstButton" >showFirstButton</a>
+                            </li>
+                            <li>
+                                <a href="#showLastButton" >showLastButton</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#pageIndexChangeEmitter" >pageIndexChangeEmitter</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(matPag: MatPaginator, elementRef: ElementRef, renderer: Renderer2)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>matPag</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatPaginator</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ElementRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>renderer</td>
+                                                  
+                                                        <td>
+                                                                    <code>Renderer2</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="appCustomLength"></a>
+                        <b>appCustomLength</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:14</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hideDefaultArrows"></a>
+                        <b>hideDefaultArrows</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:15</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="renderButtonsNumber"></a>
+                        <b>renderButtonsNumber</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>2</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:13</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showFirstButton"></a>
+                        <b>showFirstButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:11</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showLastButton"></a>
+                        <b>showLastButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:12</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+            <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageIndexChangeEmitter"></a>
+                        <b>pageIndexChangeEmitter</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;number&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:10</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildButtons"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildButtons</b></span>
+                        <a href="#buildButtons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildButtons()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeActiveButtonStyles"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>changeActiveButtonStyles</b></span>
+                        <a href="#changeActiveButtonStyles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeActiveButtonStyles(previousIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, newIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>previousIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>newIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createBubbleDivRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>createBubbleDivRef</b></span>
+                        <a href="#createBubbleDivRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createBubbleDivRef()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createButton"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>createButton</b></span>
+                        <a href="#createButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createButton(i: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:175</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>i</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>HTMLElement</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createDotsElement"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>createDotsElement</b></span>
+                        <a href="#createDotsElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createDotsElement()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="194"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:194</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>HTMLElement</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: SimpleChanges)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                        <code>SimpleChanges</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeButtons"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>removeButtons</b></span>
+                        <a href="#removeButtons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeButtons()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:167</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderButtons"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>renderButtons</b></span>
+                        <a href="#renderButtons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderButtons()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="styleDefaultPagination"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>styleDefaultPagination</b></span>
+                        <a href="#styleDefaultPagination"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>styleDefaultPagination()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="switchPage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>switchPage</b></span>
+                        <a href="#switchPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>switchPage(i: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="212"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:212</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>i</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bubbleContainerRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>bubbleContainerRef</b></span>
+                        <a href="#bubbleContainerRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLElement</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttonsRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buttonsRef</b></span>
+                        <a href="#buttonsRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLElement[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dotsEndRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dotsEndRef</b></span>
+                        <a href="#dotsEndRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLElement</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dotsStartRef"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>dotsStartRef</b></span>
+                        <a href="#dotsStartRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLElement</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ngx-dynamic-table/src/lib/directives/mobile-pagination/mobile-pagination.directive.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Directive, ElementRef, EventEmitter, Host, Input, OnChanges, Optional, Output, Renderer2, Self, SimpleChanges } from &#x27;@angular/core&#x27;
+import { MatPaginator } from &#x27;@angular/material/paginator&#x27;
+import { map, startWith } from &#x27;rxjs&#x27;
+
+@Directive({
+  selector: &#x27;[nxtMobilePagination]&#x27;,
+  standalone: true
+})
+export class MobilePaginationDirective implements AfterViewInit, OnChanges {
+  @Output() pageIndexChangeEmitter: EventEmitter&lt;number&gt; &#x3D; new EventEmitter&lt;number&gt;()
+  @Input() showFirstButton &#x3D; true
+  @Input() showLastButton &#x3D; true
+  @Input() renderButtonsNumber &#x3D; 2
+  @Input() appCustomLength: number &#x3D; 0
+  @Input() hideDefaultArrows &#x3D; false
+
+  private dotsEndRef!: HTMLElement
+  private dotsStartRef!: HTMLElement
+  private bubbleContainerRef!: HTMLElement
+  private buttonsRef: HTMLElement[] &#x3D; []
+
+  constructor(@Host() @Self() @Optional() private readonly matPag: MatPaginator, private elementRef: ElementRef, private renderer: Renderer2) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes?.[&#x27;appCustomLength&#x27;]?.firstChange) {
+      this.removeButtons()
+      this.switchPage(0)
+      this.renderButtons()
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.styleDefaultPagination()
+    this.createBubbleDivRef()
+  }
+
+  private renderButtons(): void {
+    this.buildButtons()
+
+    this.matPag.page
+      .pipe(
+        map((e) &#x3D;&gt; [e.previousPageIndex ?? 0, e.pageIndex]),
+        startWith([0, 0])
+      )
+      .subscribe(([prev, curr]) &#x3D;&gt; {
+        this.changeActiveButtonStyles(prev, curr)
+      })
+  }
+
+  private changeActiveButtonStyles(previousIndex: number, newIndex: number) {
+    const previouslyActive &#x3D; this.buttonsRef[previousIndex]
+    const currentActive &#x3D; this.buttonsRef[newIndex]
+
+    try {
+      this.renderer.removeClass(previouslyActive, &#x27;nxt-bubble__active&#x27;)
+      this.renderer.addClass(currentActive, &#x27;nxt-bubble__active&#x27;)
+      this.buttonsRef.forEach((button) &#x3D;&gt;
+        this.renderer.setStyle(button, &#x27;display&#x27;, &#x27;none&#x27;)
+      )
+      const renderElements &#x3D; this.renderButtonsNumber
+      const endDots &#x3D; newIndex &lt; this.buttonsRef.length - renderElements - 1
+      const startDots &#x3D; newIndex - renderElements &gt; 0
+  
+      const firstButton &#x3D; this.buttonsRef[0]
+      const lastButton &#x3D; this.buttonsRef[this.buttonsRef.length - 1]
+  
+      if (this.showLastButton) {
+        this.renderer.setStyle(this.dotsEndRef, &#x27;display&#x27;, endDots ? &#x27;block&#x27; : &#x27;none&#x27;)
+        this.renderer.setStyle(lastButton, &#x27;display&#x27;, endDots ? &#x27;flex&#x27; : &#x27;none&#x27;)
+      }
+  
+      if (this.showFirstButton) {
+        this.renderer.setStyle(
+          this.dotsStartRef,
+          &#x27;display&#x27;,
+          startDots ? &#x27;block&#x27; : &#x27;none&#x27;
+        )
+        this.renderer.setStyle(firstButton, &#x27;display&#x27;, startDots ? &#x27;flex&#x27; : &#x27;none&#x27;)
+      }
+  
+      const startingIndex &#x3D; startDots ? newIndex - renderElements : 0
+  
+      const endingIndex &#x3D; endDots
+        ? newIndex + renderElements
+        : this.buttonsRef.length - 1
+
+      for (let i &#x3D; startingIndex; i &lt;&#x3D; endingIndex; i++) {
+        const button &#x3D; this.buttonsRef[i]
+        this.renderer.setStyle(button, &#x27;display&#x27;, &#x27;flex&#x27;)
+      }  
+    } catch (error) {
+      console.warn(&#x27;NgxDynamicTableComponent: MobilePaginator got only one page -&gt; Paginator disabled&#x27;)
+    }
+    
+  }
+
+  private styleDefaultPagination() {
+    const nativeElement &#x3D; this.elementRef.nativeElement
+    const itemsPerPage &#x3D; nativeElement.querySelector(
+      &#x27;.mat-mdc-paginator-page-size&#x27;
+    )
+    const howManyDisplayedEl &#x3D; nativeElement.querySelector(
+      &#x27;.mat-mdc-paginator-range-label&#x27;
+    )
+    const previousButton &#x3D; nativeElement.querySelector(
+      &#x27;button.mat-mdc-paginator-navigation-previous&#x27;
+    )
+    const nextButtonDefault &#x3D; nativeElement.querySelector(
+      &#x27;button.mat-mdc-paginator-navigation-next&#x27;
+    )
+
+    this.renderer.setStyle(itemsPerPage, &#x27;display&#x27;, &#x27;none&#x27;)
+
+    this.renderer.setStyle(howManyDisplayedEl, &#x27;position&#x27;, &#x27;absolute&#x27;)
+    this.renderer.setStyle(howManyDisplayedEl, &#x27;left&#x27;, &#x27;0&#x27;)
+
+    if (this.hideDefaultArrows) {
+      this.renderer.setStyle(previousButton, &#x27;display&#x27;, &#x27;none&#x27;)
+      this.renderer.setStyle(nextButtonDefault, &#x27;display&#x27;, &#x27;none&#x27;)
+    }
+  }
+
+  private createBubbleDivRef(): void {
+    const actionContainer &#x3D; this.elementRef.nativeElement.querySelector(
+      &#x27;div.mat-mdc-paginator-range-actions&#x27;
+    )
+    const nextButtonDefault &#x3D; this.elementRef.nativeElement.querySelector(
+      &#x27;button.mat-mdc-paginator-navigation-next&#x27;
+    )
+
+    this.bubbleContainerRef &#x3D; this.renderer.createElement(&#x27;div&#x27;) as HTMLElement
+    this.renderer.addClass(this.bubbleContainerRef, &#x27;nxt-bubble-container&#x27;)
+
+    this.renderer.insertBefore(
+      actionContainer,
+      this.bubbleContainerRef,
+      nextButtonDefault
+    )
+  }
+
+  private buildButtons(): void {
+    const neededButtons &#x3D; Math.ceil(
+      this.appCustomLength / this.matPag.pageSize
+    )
+
+    if (neededButtons &#x3D;&#x3D;&#x3D; 1) {
+      this.renderer.setStyle(this.elementRef.nativeElement, &#x27;display&#x27;, &#x27;none&#x27;)
+      return
+    }
+
+    this.buttonsRef &#x3D; [this.createButton(0)]
+
+    this.dotsStartRef &#x3D; this.createDotsElement()
+
+    for (let index &#x3D; 1; index &lt; neededButtons - 1; index++) {
+      this.buttonsRef &#x3D; [...this.buttonsRef, this.createButton(index)]
+    }
+
+    this.dotsEndRef &#x3D; this.createDotsElement()
+
+    this.buttonsRef &#x3D; [
+      ...this.buttonsRef,
+      this.createButton(neededButtons - 1),
+    ]
+  }
+
+  private removeButtons(): void {
+    this.buttonsRef.forEach((button) &#x3D;&gt; {
+      this.renderer.removeChild(this.bubbleContainerRef, button)
+    })
+
+    this.buttonsRef.length &#x3D; 0
+  }
+
+  private createButton(i: number): HTMLElement {
+    const bubbleButton &#x3D; this.renderer.createElement(&#x27;div&#x27;)
+    const text &#x3D; this.renderer.createText(String(i + 1))
+
+    this.renderer.addClass(bubbleButton, &#x27;nxt-bubble&#x27;)
+    this.renderer.setStyle(bubbleButton, &#x27;margin-right&#x27;, &#x27;8px&#x27;)
+    this.renderer.appendChild(bubbleButton, text)
+
+    this.renderer.listen(bubbleButton, &#x27;click&#x27;, () &#x3D;&gt; {
+      this.switchPage(i)
+    })
+
+    this.renderer.appendChild(this.bubbleContainerRef, bubbleButton)
+
+    this.renderer.setStyle(bubbleButton, &#x27;display&#x27;, &#x27;none&#x27;)
+
+    return bubbleButton
+  }
+
+  private createDotsElement(): HTMLElement {
+    const dotsEl &#x3D; this.renderer.createElement(&#x27;span&#x27;)
+    const dotsText &#x3D; this.renderer.createText(&#x27;.....&#x27;)
+
+    this.renderer.setStyle(dotsEl, &#x27;font-size&#x27;, &#x27;18px&#x27;)
+    this.renderer.setStyle(dotsEl, &#x27;margin-right&#x27;, &#x27;8px&#x27;)
+    this.renderer.setStyle(dotsEl, &#x27;padding-top&#x27;, &#x27;6px&#x27;)
+    this.renderer.setStyle(dotsEl, &#x27;color&#x27;, &#x27;#919191&#x27;)
+
+    this.renderer.appendChild(dotsEl, dotsText)
+
+    this.renderer.appendChild(this.bubbleContainerRef, dotsEl)
+
+    this.renderer.setStyle(dotsEl, &#x27;display&#x27;, &#x27;none&#x27;)
+
+    return dotsEl
+  }
+
+  private switchPage(i: number): void {
+    const previousPageIndex &#x3D; this.matPag.pageIndex
+    this.matPag.pageIndex &#x3D; i
+    this.matPag[&#x27;_emitPageEvent&#x27;](previousPageIndex)
+
+    this.pageIndexChangeEmitter.emit(i)
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
+            var COMPODOC_CURRENT_PAGE_URL = 'MobilePaginationDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

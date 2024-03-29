@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "./out-tsc/app",
+      "types": []
+    },
+    "include": ["../demo/src/**/*.ts", "../ngx-dynamic-table/src/**/*.ts"],
+    "exclude": ["../demo/src/**/*.spec.ts", "../ngx-dynamic-table/src/**/*.spec.ts"]
+}

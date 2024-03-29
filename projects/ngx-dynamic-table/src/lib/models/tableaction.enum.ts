@@ -1,3 +1,7 @@
+/**
+ * This enumeration defines all options that will return from table.
+ * @enum
+ */
 export enum TableActionEnum {
     CREATE = 0,
     DELETE = 1,

@@ -1,0 +1,10 @@
+# Changelog
+
+## Documentation
+
+```json
+{
+    "include": ["src/**/*.ts"],
+    "exclude": ["src/test.ts", "src/**/*.spec.ts", "src/app/file-to-exclude.ts"]
+}
+```

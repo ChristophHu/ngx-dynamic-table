@@ -1,0 +1,2062 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-dynamic-table documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">ngx-dynamic-table documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NgxDynamicTableComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This component to demonstrate Compodoc documentation.
+It displays a greeting message.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;dynamic-table [table]=&quot;table&quot; [data$]=&quot;data$&quot; [pageSize]=&quot;4&quot; (action)=&quot;returnTableAction($event)&quot; [isEditableInTable]=&quot;true&quot;&gt;&lt;/dynamic-table&gt;</code></pre></div>
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>dynamic-table</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>DynamicPipe</code>
+                            <code>FormsModule</code>
+                                <code><a href="../components/IconsComponent.html" target="_self" >IconsComponent</a></code>
+                            <code>MatMenuModule</code>
+                            <code>MatPaginatorModule</code>
+                            <code>MatSortModule</code>
+                            <code>MatTableModule</code>
+                                <code><a href="../directives/MobilePaginationDirective.html" target="_self" >MobilePaginationDirective</a></code>
+                            <code>ReactiveFormsModule</code>
+                                <code><a href="../components/ScrollIndicatorComponent.html" target="_self" >ScrollIndicatorComponent</a></code>
+                                <code><a href="../directives/StickyDirective.html" target="_self" >StickyDirective</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ngx-dynamic-table.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ngx-dynamic-table.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_changePaginator" >_changePaginator</a>
+                            </li>
+                            <li>
+                                <a href="#changePaginator$" >changePaginator$</a>
+                            </li>
+                            <li>
+                                <a href="#dataSource" >dataSource</a>
+                            </li>
+                            <li>
+                                <a href="#getRangeLabel" >getRangeLabel</a>
+                            </li>
+                            <li>
+                                <a href="#isEditable$" >isEditable$</a>
+                            </li>
+                            <li>
+                                <a href="#pageSizeOptions" >pageSizeOptions</a>
+                            </li>
+                            <li>
+                                <a href="#paginator" >paginator</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#sort" >sort</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#check" >check</a>
+                            </li>
+                            <li>
+                                <a href="#checkAll" >checkAll</a>
+                            </li>
+                            <li>
+                                <a href="#clickAction" >clickAction</a>
+                            </li>
+                            <li>
+                                <a href="#create" >create</a>
+                            </li>
+                            <li>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                <a href="#edit" >edit</a>
+                            </li>
+                            <li>
+                                <a href="#isSticky" >isSticky</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#refresh" >refresh</a>
+                            </li>
+                            <li>
+                                <a href="#textfilter" >textfilter</a>
+                            </li>
+                            <li>
+                                <a href="#updatePaginator" >updatePaginator</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#data$" >data$</a>
+                            </li>
+                            <li>
+                                <a href="#isEditableInTable" >isEditableInTable</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize" >pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#tableoptions" >tableoptions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#action" >action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#_paginator" >_paginator</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_dynamicTableService: <a href="../injectables/DynamicTableService.html" target="_self">DynamicTableService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:84</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_dynamicTableService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DynamicTableService.html" target="_self" >DynamicTableService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data$"></a>
+                        <b>data$</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;any[]&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:63</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isEditableInTable"></a>
+                        <b>isEditableInTable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:64</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageSize"></a>
+                        <b>pageSize</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:65</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tableoptions"></a>
+                        <b>tableoptions</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Tableoptions.html" target="_self" >Tableoptions</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:62</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The name to be displayed in the greeting.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="action"></a>
+                        <b>action</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;TableActionReturn&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:66</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="check"></a>
+                    <span class="name">
+                        <span ><b>check</b></span>
+                        <a href="#check"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>check(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="194"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:194</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkAll"></a>
+                    <span class="name">
+                        <span ><b>checkAll</b></span>
+                        <a href="#checkAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkAll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="197"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:197</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickAction"></a>
+                    <span class="name">
+                        <span ><b>clickAction</b></span>
+                        <a href="#clickAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickAction(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, action: <a href="../undefineds/TableActionEnum.html" target="_self">TableActionEnum</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:174</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>This function returns to returnTableAction by using @Output().</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;button mat-menu-item class=&quot;!flex items-center&quot; (click)=&quot;clickAction(element.id, action.action)&quot;&gt;</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The first number.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>action</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/enumerations.html#TableActionEnum" target="_self" >TableActionEnum</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The second number.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>create()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="181"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:181</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits a corresponding event to create an new row.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:191</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="edit"></a>
+                    <span class="name">
+                        <span ><b>edit</b></span>
+                        <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>edit(row: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits a corresponding event to edit an row.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The selected row.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSticky"></a>
+                    <span class="name">
+                        <span ><b>isSticky</b></span>
+                        <a href="#isSticky"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isSticky(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refresh"></a>
+                    <span class="name">
+                        <span ><b>refresh</b></span>
+                        <a href="#refresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refresh()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="200"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:200</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="textfilter"></a>
+                    <span class="name">
+                        <span ><b>textfilter</b></span>
+                        <a href="#textfilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>textfilter(filterText: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="162"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:162</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Set the datasource.filter to filter in table.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filterText</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Text to filter in table.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePaginator"></a>
+                    <span class="name">
+                        <span ><b>updatePaginator</b></span>
+                        <a href="#updatePaginator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePaginator()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_changePaginator"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_changePaginator</b></span>
+                        <a href="#_changePaginator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject&lt;boolean&gt;(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changePaginator$"></a>
+                    <span class="name">
+                        <span ><b>changePaginator$</b></span>
+                        <a href="#changePaginator$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._changePaginator.asObservable()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSource"></a>
+                    <span class="name">
+                        <span ><b>dataSource</b></span>
+                        <a href="#dataSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRangeLabel"></a>
+                    <span class="name">
+                        <span ><b>getRangeLabel</b></span>
+                        <a href="#getRangeLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isEditable$"></a>
+                    <span class="name">
+                        <span ><b>isEditable$</b></span>
+                        <a href="#isEditable$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._dynamicTableService.isEditable$</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageSizeOptions"></a>
+                    <span class="name">
+                        <span ><b>pageSizeOptions</b></span>
+                        <a href="#pageSizeOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[1, 5, 10, 15, 20, 50, 100]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginator"></a>
+                    <span class="name">
+                        <span ><b>paginator</b></span>
+                        <a href="#paginator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatPaginator</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sort"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>sort</b></span>
+                        <a href="#sort"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatSort</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatSort)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_paginator"></a>
+                        <span class="name"><b>_paginator</b><a href="#_paginator"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>_paginator(paginator: MatPaginator)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/ngx-dynamic-table/src/lib/ngx-dynamic-table.component.ts:73</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>paginator</td>
+                                                    
+                                                            <td>
+                                                                        <code>MatPaginator</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { animate, sequence, style, transition, trigger } from &#x27;@angular/animations&#x27;
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from &#x27;@angular/core&#x27;
+import { Tableoptions } from &#x27;./models/tableoptions.model&#x27;
+import { BehaviorSubject, Observable, of } from &#x27;rxjs&#x27;
+import { TableActionReturn } from &#x27;./models/tableaction.model&#x27;
+import { MatSort, MatSortModule, MatSortable } from &#x27;@angular/material/sort&#x27;
+import { MatPaginator, MatPaginatorModule } from &#x27;@angular/material/paginator&#x27;
+import { DynamicTableService } from &#x27;./services/dynamic-table.service&#x27;
+import { MatTableDataSource, MatTableModule } from &#x27;@angular/material/table&#x27;
+import { TableActionEnum } from &#x27;./models/tableaction.enum&#x27;
+import { CommonModule } from &#x27;@angular/common&#x27;
+import { DynamicPipe } from &#x27;./pipes/dynamic/dynamic.pipe&#x27;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;
+import { MatMenuModule } from &#x27;@angular/material/menu&#x27;
+import { ScrollIndicatorComponent } from &#x27;./components/scroll-indicator/scroll-indicator.component&#x27;
+import { StickyDirective } from &#x27;./directives/sticky/sticky.directive&#x27;
+import { MobilePaginationDirective } from &#x27;./directives/mobile-pagination/mobile-pagination.directive&#x27;
+import { IconsComponent } from &#x27;./components/icons/icons.component&#x27;
+
+export const rowsAnimation &#x3D; trigger(&#x27;rowsAnimation&#x27;, [
+  transition(&#x27;void &#x3D;&gt; *&#x27;, [
+    style({ height: &#x27;*&#x27;, opacity: &#x27;0&#x27;, transform: &#x27;translateX(-550px)&#x27;, &#x27;box-shadow&#x27;: &#x27;none&#x27; }),
+    sequence([
+      animate(&quot;.35s ease&quot;, style({ height: &#x27;*&#x27;, opacity: &#x27;.2&#x27;, transform: &#x27;translateX(0)&#x27;, &#x27;box-shadow&#x27;: &#x27;none&#x27;  })),
+      animate(&quot;.35s ease&quot;, style({ height: &#x27;*&#x27;, opacity: 1, transform: &#x27;translateX(0)&#x27; }))
+    ])
+  ])
+])
+
+/**
+ * This component to demonstrate Compodoc documentation.
+ * It displays a greeting message.
+ * 
+ * @example
+ * &lt;dynamic-table [table]&#x3D;&quot;table&quot; [data$]&#x3D;&quot;data$&quot; [pageSize]&#x3D;&quot;4&quot; (action)&#x3D;&quot;returnTableAction($event)&quot; [isEditableInTable]&#x3D;&quot;true&quot;&gt;&lt;/dynamic-table&gt;
+ */
+@Component({
+  selector: &#x27;dynamic-table&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    DynamicPipe,
+    FormsModule,
+    IconsComponent,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MobilePaginationDirective,
+    ReactiveFormsModule,
+    ScrollIndicatorComponent,
+    StickyDirective
+  ],
+  templateUrl: &#x27;./ngx-dynamic-table.component.html&#x27;,
+  styleUrls: [&#x27;./ngx-dynamic-table.component.sass&#x27;]
+})
+export class NgxDynamicTableComponent implements OnInit {
+  /**
+   * The name to be displayed in the greeting.
+   * @type {string}
+   */
+  @Input() tableoptions!: Tableoptions
+  @Input() data$!: Observable&lt;any[]&gt;
+  @Input() isEditableInTable: boolean &#x3D; false
+  @Input() pageSize: number &#x3D; 10
+  @Output() action: EventEmitter&lt;TableActionReturn&gt; &#x3D; new EventEmitter&lt;TableActionReturn&gt;()
+
+  /**
+   * @description default class of NgxDynamicTableComponent
+   * @memberof NgxDynamicTableComponent
+   */
+  paginator!: MatPaginator
+  @ViewChild(MatPaginator) set _paginator(paginator: MatPaginator) {
+    this.paginator &#x3D; paginator
+    this.dataSource.paginator &#x3D; this.paginator
+  }
+  @ViewChild(MatSort) sort!: MatSort
+
+  private readonly _changePaginator &#x3D; new BehaviorSubject&lt;boolean&gt;(false) 
+  changePaginator$: Observable&lt;boolean&gt; &#x3D; this._changePaginator.asObservable()
+
+  dataSource: any
+  pageSizeOptions: number[] &#x3D; [1, 5, 10, 15, 20, 50, 100]
+  isEditable$: Observable&lt;boolean&gt; &#x3D; this._dynamicTableService.isEditable$
+
+  constructor(private _dynamicTableService: DynamicTableService) {
+    this.dataSource &#x3D; new MatTableDataSource([])
+  }
+  
+  ngOnInit(): void {
+    this.data$.subscribe({
+      next: (data: any[]) &#x3D;&gt; {  
+        console.log(&#x27;data&#x27;, data)
+        if (data &amp;&amp; data.length &gt; 0) {
+          setTimeout(() &#x3D;&gt; {
+            if (this.tableoptions.showPaginator &amp;&amp; this.paginator) {
+              this.paginator._intl.itemsPerPageLabel &#x3D; &#x27;Elemente pro Seite&#x27;
+              this.paginator._intl.nextPageLabel &#x3D; &#x27;Nächste&#x27;
+              this.paginator._intl.previousPageLabel &#x3D; &#x27;Vorherige&#x27;
+              this.paginator._intl.getRangeLabel &#x3D; this.getRangeLabel
+              this.dataSource.paginator &#x3D; this.paginator
+            }
+  
+            if (this.tableoptions.sortColumn &amp;&amp; this.tableoptions.sortStart) {
+              if (this.sort !&#x3D; undefined) this.sort.sort(({ id: this.tableoptions.sortColumn, start: this.tableoptions.sortStart }) as MatSortable)
+            }
+            this.dataSource.sort &#x3D; this.sort
+            this.dataSource.data &#x3D; data
+
+            // ToDo: date is hardcoded!
+            this.dataSource.sortingDataAccessor &#x3D; (item: any, property: any) &#x3D;&gt; {
+              switch (property) {
+                 case &#x27;date&#x27;: return new Date(item.date)
+                 default: return item[property]
+              }
+            }
+  
+            this.dataSource.filterPredicate &#x3D; (data: any, filter: string) &#x3D;&gt; {
+              let match: boolean &#x3D; false
+              this.tableoptions.columnFilter.forEach((element: string) &#x3D;&gt; {
+                match &#x3D; (match || data[element].trim().toLowerCase().includes(filter)) // ToDo: error on filter &quot;tr&quot; in klarmeldung
+              })
+              return match
+            }
+  
+            this._dynamicTableService.textFilter$.subscribe((data) &#x3D;&gt; this.textfilter(data))
+          }, 20)
+        }
+      },
+      error(err) {
+        console.log(err)
+      }
+    })
+  }
+
+  getRangeLabel &#x3D; (page: number, pageSize: number, length: number): string &#x3D;&gt; {
+    const of &#x3D; &quot;von&quot;
+    if (length &#x3D;&#x3D;&#x3D; 0 || pageSize &#x3D;&#x3D;&#x3D; 0) {
+      return &quot;0 &quot; + of + &quot; &quot; + length
+    }
+    length &#x3D; Math.max(length, 0)
+    const startIndex &#x3D; page * pageSize &gt; length ? (Math.ceil(length / pageSize) - 1) * pageSize : page * pageSize
+
+    const endIndex &#x3D; Math.min(startIndex + pageSize, length)
+    return startIndex + 1 + &quot; - &quot; + endIndex + &quot; &quot; + of + &quot; &quot; + length
+  }
+
+  updatePaginator() {
+    this._changePaginator.next(true)
+  }
+
+  isSticky(id: string) {
+    const buttonToggleGroup: string[] &#x3D; [&#x27;checkbox&#x27;, &#x27;count&#x27;, &#x27;name&#x27;]
+    return (buttonToggleGroup || []).indexOf(id) !&#x3D;&#x3D; -1
+  }
+
+  /**
+   * Set the datasource.filter to filter in table.
+   *
+   * @param filterText - Text to filter in table.
+   */
+  textfilter(filterText: string) {
+    this.dataSource.filter &#x3D; filterText.trim().toLowerCase()
+  }
+
+  /**
+   * This function returns to returnTableAction by using @Output().
+   * @param {string}  id - The first number.
+   * @param {enum}    action - The second number.
+   * 
+   * @example:
+   * &lt;button mat-menu-item class&#x3D;&quot;!flex items-center&quot; (click)&#x3D;&quot;clickAction(element.id, action.action)&quot;&gt;
+   */
+  clickAction(id: string, action: TableActionEnum) {
+    this.action.emit({ id, action })
+  }
+
+  /**
+   * Emits a corresponding event to create an new row.
+   */
+  create() {
+    this.action.emit({ id: &#x27;&#x27;, action: TableActionEnum.CREATE })
+  }
+  /**
+   * Emits a corresponding event to edit an row.
+   * @param {string} row - The selected row.
+   */
+  edit(row: any) {
+    if (!this.isEditableInTable) this.action.emit({ row, action: TableActionEnum.EDIT })
+  }
+  delete(row: any) {
+    this.action.emit({ row, action: TableActionEnum.DELETE })
+  }
+  check(row: any) {
+    this.action.emit({ row, action: TableActionEnum.CHECK })
+  }
+  checkAll() {
+    this.action.emit({ action: TableActionEnum.CHECKALL })
+  }
+  refresh() {
+    this.action.emit({ action: TableActionEnum.REFRESH })
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ng-container *ngIf&#x3D;&quot;tableoptions &amp;&amp; (data$ | async)?.length !&#x3D; 0 &amp;&amp; (data$ | async) as data; else noData&quot;&gt;
+    &lt;div class&#x3D;&quot;relative left-0 right-0 flex flex-col w-full px-2 overflow-auto scrollbar-hide rounded-b-lg&quot; cdk-scrollable #scrollableContent&gt;
+        &lt;table mat-table [dataSource]&#x3D;&quot;dataSource&quot; matSort class&#x3D;&quot;relative w-full&quot;&gt;
+            &lt;thead&gt;
+                &lt;ng-container matColumnDef&#x3D;&quot;count&quot;&gt;
+                    &lt;th mat-header-cell *matHeaderCellDef&gt; Nr. &lt;/th&gt;
+                    &lt;td mat-cell *matCellDef&#x3D;&quot;let element; let i &#x3D; index&quot;&gt;{{ this.paginator!.pageIndex &#x3D;&#x3D; 0 ? i + 1 : 1 + i + this.paginator!.pageIndex * this.paginator!.pageSize }}&lt;/td&gt; &lt;!-- {{ this.paginator!.pageIndex &#x3D;&#x3D; 0 ? i + 1 : 1 + i + this.paginator!.pageIndex * this.paginator!.pageSize }} --&gt;
+                &lt;/ng-container&gt;
+                &lt;ng-container matColumnDef&#x3D;&quot;checkbox&quot;&gt;
+                    &lt;th mat-header-cell *matHeaderCellDef&gt;
+                        &lt;div class&#x3D;&quot;grid w-5 h-5 bg-white dark:bg-gray-800 place-items-center rounded-sm relative&quot; (click)&#x3D;&quot;checkAll()&quot;&gt;
+                            &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;w-full h-full focus:outline-none cursor-pointer&quot; /&gt;
+                        &lt;/div&gt;
+                    &lt;/th&gt;
+                    &lt;td mat-cell *matCellDef&#x3D;&quot;let element; let i &#x3D; index&quot;&gt;
+                        &lt;div class&#x3D;&quot;my-2 mr-2 bg-light dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative&quot; (click)&#x3D;&quot;check(element)&quot;&gt;
+                            &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;w-full h-full focus:outline-none cursor-pointer&quot; [checked]&#x3D;&quot;element[&#x27;checked&#x27;]&quot;/&gt;
+                        &lt;/div&gt;
+                    &lt;/td&gt;
+                &lt;/ng-container&gt;
+        
+                &lt;ng-container *ngFor&#x3D;&quot;let column of tableoptions.columns&quot; matColumnDef&#x3D;&quot;{{ column.name }}&quot;&gt;
+                    &lt;th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]&#x3D;&quot;!column.sortable&quot; [ngClass]&#x3D;&quot;{&#x27;hidden&#x27;: column.hidden}&quot;&gt; {{ column.header }} &lt;/th&gt;
+                    &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot; [ngClass]&#x3D;&quot;{&#x27;hidden&#x27;: column.hidden}&quot;&gt;
+                        &lt;ng-container *ngIf&#x3D;&quot;(isEditable$ | async); else notEditable&quot;&gt;
+                            &lt;ng-container [ngSwitch]&#x3D;&quot;true&quot;&gt;
+                                &lt;ng-container *ngSwitchCase&#x3D;&quot;column.type &#x3D;&#x3D; &#x27;checkbox&#x27;&quot;&gt;
+                                    &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;element[column.cell]&quot;&gt;
+                                &lt;/ng-container&gt;
+                                &lt;ng-container *ngSwitchCase&#x3D;&quot;column.type &#x3D;&#x3D; &#x27;datetime-local&#x27;&quot;&gt;
+                                    &lt;ng-container *ngIf&#x3D;&quot;!column.pipe; else hasPipe&quot;&gt;&lt;input [type]&#x3D;&quot;column.type&quot; [value]&#x3D;&quot;element[column.cell]&quot; /&gt;&lt;/ng-container&gt;
+                                    &lt;ng-template #hasPipe&gt;&lt;input [type]&#x3D;&quot;column.type&quot; [value]&#x3D;&quot;element[column.cell] | dynamicPipe: column.pipe!.name: column.pipe!.args&quot; /&gt;&lt;/ng-template&gt;
+                                &lt;/ng-container&gt;
+                                &lt;ng-container &gt;
+                                    &lt;input [type]&#x3D;&quot;column.type&quot; [value]&#x3D;&quot;element[column.cell]&quot; /&gt;
+                                &lt;/ng-container&gt;
+                            &lt;/ng-container&gt;
+                        &lt;/ng-container&gt;
+                        &lt;ng-template #notEditable&gt;
+                            &lt;ng-container [ngSwitch]&#x3D;&quot;true&quot;&gt;
+                                &lt;ng-container *ngSwitchCase&#x3D;&quot;column.type &#x3D;&#x3D; &#x27;checkbox&#x27;&quot;&gt;
+                                    &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;element[column.cell]&quot; [disabled]&#x3D;&quot;column.disabled&quot;&gt;
+                                &lt;/ng-container&gt;
+                                &lt;ng-container *ngSwitchCase&#x3D;&quot;column.type &#x3D;&#x3D; &#x27;datetime-local&#x27;&quot;&gt;
+                                    &lt;ng-container *ngIf&#x3D;&quot;!column.pipe&quot;&gt;{{ element[column.cell] }}&lt;/ng-container&gt;
+                                    &lt;ng-container *ngIf&#x3D;&quot;column.pipe&quot;&gt;{{ element[column.cell] | dynamicPipe: column.pipe.name: column.pipe.args }}&lt;/ng-container&gt;
+                                &lt;/ng-container&gt;
+                                &lt;ng-container *ngSwitchDefault&gt;
+                                    &lt;ng-container *ngIf&#x3D;&quot;!column.pipe&quot;&gt;{{ element[column.cell] }}&lt;/ng-container&gt;
+                                    &lt;ng-container *ngIf&#x3D;&quot;column.pipe&quot;&gt;{{ element[column.cell] | dynamicPipe: column.pipe.name: column.pipe.args }}&lt;/ng-container&gt;
+                                &lt;/ng-container&gt;
+                            &lt;/ng-container&gt;
+                        &lt;/ng-template&gt;
+                    &lt;/td&gt; 
+                &lt;/ng-container&gt;
+            
+                &lt;ng-container matColumnDef&#x3D;&quot;actions&quot;&gt;
+                    &lt;th mat-header-cell *matHeaderCellDef&gt;&lt;/th&gt;
+                    &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+                        &lt;button [matMenuTriggerFor]&#x3D;&quot;menu&quot; class&#x3D;&quot;w-full&quot;&gt;
+                            &lt;div class&#x3D;&quot; h-6 w-6 text-dark fill-dark&quot;&gt;
+                                &lt;icons class&#x3D;&quot;w-8 h-8 stroke-1 stroke-current&quot; name&#x3D;&quot;dots&quot;&gt;&lt;/icons&gt;
+                            &lt;/div&gt;
+                        &lt;/button&gt;
+                        
+                        &lt;mat-menu #menu&#x3D;&quot;matMenu&quot;&gt;
+                            &lt;ng-container *ngFor&#x3D;&quot;let action of tableoptions.actions&quot;&gt;
+                                &lt;button mat-menu-item class&#x3D;&quot;!flex items-center&quot; (click)&#x3D;&quot;clickAction(element.id, action.action)&quot;&gt;
+                                    &lt;div class&#x3D;&quot;flex flex-row&quot;&gt;
+                                        &lt;div class&#x3D;&quot; h-6 w-6 fill-dark&quot;&gt;
+                                            &lt;icons class&#x3D;&quot;w-8 h-8 stroke-1 stroke-current&quot; name&#x3D;&quot;{{ action.icon }}&quot;&gt;&lt;/icons&gt;
+                                        &lt;/div&gt;
+                                        &lt;span class&#x3D;&quot;ml-4&quot;&gt;{{ action.name }}&lt;/span&gt;
+                                    &lt;/div&gt;
+                                &lt;/button&gt;
+                            &lt;/ng-container&gt;
+                        &lt;/mat-menu&gt;
+                    &lt;/td&gt;
+                &lt;/ng-container&gt;
+                &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;tableoptions.columnNames; sticky: true&quot;&gt;&lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: tableoptions.columnNames;&quot; (click)&#x3D;&quot;edit(row)&quot;&gt;&lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;!-- &lt;mat-paginator class&#x3D;&quot;sticky bottom-0 z-10&quot; *ngIf&#x3D;&quot;table.showPaginator&quot; [pageSize]&#x3D;&quot;pageSize&quot; [pageSizeOptions]&#x3D;&quot;pageSizeOptions&quot; (page)&#x3D;&quot;updatePaginator()&quot;&gt;&lt;/mat-paginator&gt; --&gt;
+        &lt;div [ngClass]&#x3D;&quot;{&#x27;border-t border-borderline&#x27;: dataSource.data.length &gt; pageSize}&quot;&gt;
+            &lt;mat-paginator
+                nxtMobilePagination
+                [appCustomLength]&#x3D;&quot;dataSource.data.length&quot;
+                [length]&#x3D;&quot;dataSource.data.length&quot;
+                [pageSize]&#x3D;&quot;pageSize&quot;
+                [pageSizeOptions]&#x3D;&quot;pageSizeOptions&quot;
+                (page)&#x3D;&quot;updatePaginator()&quot;
+                &gt;
+            &lt;/mat-paginator&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;scroll-indicator [scrollableContent]&#x3D;&quot;scrollableContent&quot; [distance]&#x3D;&quot;tableoptions.showPaginator ? 8 : 0&quot; [change]&#x3D;&quot;changePaginator$&quot;&gt;&lt;/scroll-indicator&gt;
+&lt;/ng-container&gt;
+
+&lt;ng-template #noData&gt;
+    &lt;div class&#x3D;&quot;flex h-12 pt-2 w-full items-center justify-center text-dark&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;!(data$ | async)&quot; class&#x3D;&quot;text-xl&quot;&gt;
+            &lt;div class&#x3D;&quot;w-8 h-8 fill-blue-600 text-gray-200 animate-spin&quot;&gt;
+                &lt;icons class&#x3D;&quot;&quot; name&#x3D;&quot;spinner&quot;&gt;&lt;/icons&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;sr-only&quot;&gt;Loading...&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div *ngIf&#x3D;&quot;(data$ | async)?.length &#x3D;&#x3D; 0&quot; class&#x3D;&quot;!flex text-xl&quot;&gt;
+            &lt;div class&#x3D;&quot;w-8 h-8&quot;&gt;
+                &lt;icons class&#x3D;&quot;stroke-2 stroke-current&quot; name&#x3D;&quot;alert-triangle&quot;&gt;&lt;/icons&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;mx-2&quot;&gt;Es konnten keine Daten geladen werden.&lt;/span&gt;
+            &lt;button class&#x3D;&quot;w-8 h-8 text-accent&quot; (click)&#x3D;&quot;refresh()&quot;&gt;
+                &lt;icons class&#x3D;&quot;stroke-2 stroke-current&quot; name&#x3D;&quot;refresh&quot;&gt;&lt;/icons&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/ng-template&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./ngx-dynamic-table.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">*
+    @apply ring-0 ring-offset-0 outline-none
+
+.mat-column-count
+    @apply w-16 pr-4 justify-center bg-white
+
+.mat-column-actions
+    @apply w-20 justify-center
+
+    button
+        @apply mx-auto
+
+
+// .mat-mdc-table
+//     @apply bg-tertiary #{!important}
+
+.mat-mdc-header-row
+    @apply bg-tertiary text-darker #{!important}
+
+// .mat-mdc-row
+//     @apply border-t border-borderline #{!important}
+
+// .mdc-data-table__row
+//     @apply border-t border-borderline #{!important}
+
+.mat-mdc-header-cell
+    @apply border-none border-b border-2 border-borderline border-2 #{!important}
+
+.mat-column-checkbox
+    @apply m-0 p-0 w-8 #{!important}
+
+.mat-column-count
+    @apply bg-transparent #{!important}
+
+.mat-mdc-row
+    @apply bg-tertiary text-dark #{!important}
+
+.mat-mdc-cell
+    @apply border-t border-light #{!important}
+
+// paginator
+.mat-mdc-paginator
+    @apply bg-tertiary text-dark #{!important}
+
+    .mdc-text-field
+        // @apply text-dark #{!important}
+
+    .mdc-text-field--outlined
+        // @apply outline-none border-borderline #{!important}
+
+    .mat-mdc-select
+        @apply text-dark #{!important}
+
+    .mat-mdc-select-arrow
+        @apply text-dark #{!important}
+
+    .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing
+        @apply border-borderline border #{!important}
+
+    // .mat-paginator-navigation-previous
+    //     display: none !important
+
+    // .mat-paginator-navigation-next
+    //     display: none !important
+
+.mat-mdc-paginator-icon
+    @apply fill-none text-dark #{!important}
+
+.mat-mdc-paginator-container
+    @apply p-0 #{!important}
+    
+// bubble-pagination
+.nxt-bubble-container
+  display: flex
+//   gap: 4px
+
+.nxt-bubble
+  background-color: #919191
+  border-radius: 50%
+  width: 34px
+  height: 34px
+  display: flex
+  align-items: center
+  justify-content: center
+  color: white !important
+  font-size: 14px
+  cursor: pointer
+  transition: 0.3s
+
+.nxt-bubble:hover
+  background-color: #b6b6b6
+  color: white
+
+.nxt-bubble__active
+    @apply bg-dark text-darker
+//   background-color: #6193a1
+//   color: white
+
+.nxt-bubble__disabled
+  cursor: default
+  opacity: 0.5
+  pointer-events: none
+  color: 919191
+
+/* TODO(mdc-migration): The following rule targets internal classes of paginator that may no longer apply for the MDC version. */
+mat-paginator
+  background: transparent !important
+
+.mat-mdc-paginator-range-actions
+  margin-right: 12px !important
+
+.paginator
+    font-family: &#x27;Lato&#x27;, sans-serif
+    font-size: 15px
+
+.paginator .ngx-pagination .current
+    background: rgb(131, 131, 131)
+    border-radius: 4px
+    padding-left: 9px
+    padding-right: 9px
+
+.paginator .ngx-pagination a:hover, .ngx-pagination button:hover
+    background: #d4d4d4
+    border-radius: 3px
+    padding-left: 9px
+    padding-right: 9px
+    text-decoration: none
+
+.paginator .ngx-pagination a:focus, .ngx-pagination button:focus
+    outline: none
+    background: #d4d4d4</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="tableoptions && (data$ | async)?.length != 0 && (data$ | async) as data; else noData">    <div class="relative left-0 right-0 flex flex-col w-full px-2 overflow-auto scrollbar-hide rounded-b-lg" cdk-scrollable #scrollableContent>        <table mat-table [dataSource]="dataSource" matSort class="relative w-full">            <thead>                <ng-container matColumnDef="count">                    <th mat-header-cell *matHeaderCellDef> Nr. </th>                    <td mat-cell *matCellDef="let element; let i = index">{{ this.paginator!.pageIndex == 0 ? i + 1 : 1 + i + this.paginator!.pageIndex * this.paginator!.pageSize }}</td> <!-- {{ this.paginator!.pageIndex == 0 ? i + 1 : 1 + i + this.paginator!.pageIndex * this.paginator!.pageSize }} -->                </ng-container>                <ng-container matColumnDef="checkbox">                    <th mat-header-cell *matHeaderCellDef>                        <div class="grid w-5 h-5 bg-white dark:bg-gray-800 place-items-center rounded-sm relative" (click)="checkAll()">                            <input type="checkbox" class="w-full h-full focus:outline-none cursor-pointer" />                        </div>                    </th>                    <td mat-cell *matCellDef="let element; let i = index">                        <div class="my-2 mr-2 bg-light dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative" (click)="check(element)">                            <input type="checkbox" class="w-full h-full focus:outline-none cursor-pointer" [checked]="element[\'checked\']"/>                        </div>                    </td>                </ng-container>                        <ng-container *ngFor="let column of tableoptions.columns" matColumnDef="{{ column.name }}">                    <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable" [ngClass]="{\'hidden\': column.hidden}"> {{ column.header }} </th>                    <td mat-cell *matCellDef="let element" [ngClass]="{\'hidden\': column.hidden}">                        <ng-container *ngIf="(isEditable$ | async); else notEditable">                            <ng-container [ngSwitch]="true">                                <ng-container *ngSwitchCase="column.type == \'checkbox\'">                                    <input type="checkbox" [checked]="element[column.cell]">                                </ng-container>                                <ng-container *ngSwitchCase="column.type == \'datetime-local\'">                                    <ng-container *ngIf="!column.pipe; else hasPipe"><input [type]="column.type" [value]="element[column.cell]" /></ng-container>                                    <ng-template #hasPipe><input [type]="column.type" [value]="element[column.cell] | dynamicPipe: column.pipe!.name: column.pipe!.args" /></ng-template>                                </ng-container>                                <ng-container >                                    <input [type]="column.type" [value]="element[column.cell]" />                                </ng-container>                            </ng-container>                        </ng-container>                        <ng-template #notEditable>                            <ng-container [ngSwitch]="true">                                <ng-container *ngSwitchCase="column.type == \'checkbox\'">                                    <input type="checkbox" [checked]="element[column.cell]" [disabled]="column.disabled">                                </ng-container>                                <ng-container *ngSwitchCase="column.type == \'datetime-local\'">                                    <ng-container *ngIf="!column.pipe">{{ element[column.cell] }}</ng-container>                                    <ng-container *ngIf="column.pipe">{{ element[column.cell] | dynamicPipe: column.pipe.name: column.pipe.args }}</ng-container>                                </ng-container>                                <ng-container *ngSwitchDefault>                                    <ng-container *ngIf="!column.pipe">{{ element[column.cell] }}</ng-container>                                    <ng-container *ngIf="column.pipe">{{ element[column.cell] | dynamicPipe: column.pipe.name: column.pipe.args }}</ng-container>                                </ng-container>                            </ng-container>                        </ng-template>                    </td>                 </ng-container>                            <ng-container matColumnDef="actions">                    <th mat-header-cell *matHeaderCellDef></th>                    <td mat-cell *matCellDef="let element">                        <button [matMenuTriggerFor]="menu" class="w-full">                            <div class=" h-6 w-6 text-dark fill-dark">                                <icons class="w-8 h-8 stroke-1 stroke-current" name="dots"></icons>                            </div>                        </button>                                                <mat-menu #menu="matMenu">                            <ng-container *ngFor="let action of tableoptions.actions">                                <button mat-menu-item class="!flex items-center" (click)="clickAction(element.id, action.action)">                                    <div class="flex flex-row">                                        <div class=" h-6 w-6 fill-dark">                                            <icons class="w-8 h-8 stroke-1 stroke-current" name="{{ action.icon }}"></icons>                                        </div>                                        <span class="ml-4">{{ action.name }}</span>                                    </div>                                </button>                            </ng-container>                        </mat-menu>                    </td>                </ng-container>                <tr mat-header-row *matHeaderRowDef="tableoptions.columnNames; sticky: true"></tr>            </thead>            <tr mat-row *matRowDef="let row; columns: tableoptions.columnNames;" (click)="edit(row)"></tr>        </table>        <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->        <div [ngClass]="{\'border-t border-borderline\': dataSource.data.length > pageSize}">            <mat-paginator                nxtMobilePagination                [appCustomLength]="dataSource.data.length"                [length]="dataSource.data.length"                [pageSize]="pageSize"                [pageSizeOptions]="pageSizeOptions"                (page)="updatePaginator()"                >            </mat-paginator>        </div>    </div>    <scroll-indicator [scrollableContent]="scrollableContent" [distance]="tableoptions.showPaginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator></ng-container><ng-template #noData>    <div class="flex h-12 pt-2 w-full items-center justify-center text-dark">        <div *ngIf="!(data$ | async)" class="text-xl">            <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">                <icons class="" name="spinner"></icons>            </div>            <span class="sr-only">Loading...</span>        </div>        <div *ngIf="(data$ | async)?.length == 0" class="!flex text-xl">            <div class="w-8 h-8">                <icons class="stroke-2 stroke-current" name="alert-triangle"></icons>            </div>            <span class="mx-2">Es konnten keine Daten geladen werden.</span>            <button class="w-8 h-8 text-accent" (click)="refresh()">                <icons class="stroke-2 stroke-current" name="refresh"></icons>            </button>        </div>    </div></ng-template></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CircularSpinnerComponent', 'selector': 'circular-spinner'},{'name': 'IconsComponent', 'selector': 'icons'},{'name': 'NgxDynamicTableComponent', 'selector': 'dynamic-table'},{'name': 'ScrollIndicatorComponent', 'selector': 'scroll-indicator'},{'name': 'SpinnerComponent', 'selector': ''}];
+    var DIRECTIVES = [{'name': 'MobilePaginationDirective', 'selector': '[nxtMobilePagination]'},{'name': 'StickyDirective', 'selector': '[sticky]'}];
+    var ACTUAL_COMPONENT = {'name': 'NgxDynamicTableComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgxDynamicTableComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

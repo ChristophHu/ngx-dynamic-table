@@ -1,5 +1,14 @@
-# Shorten
+# Truncate/Shorten Pipe
 
+## Use
+    
+```html
+<div>
+{{ 'Lorem Ipsum dolor sit amet.' | truncate: 11 }}
+</div>
+```
+
+Output: `Lorem Ipsum...`
 ## Alternativen
 
 ```html

@@ -1,4 +1,4 @@
-<ng-container *ngIf="table && (data$ | async)?.length != 0 && (data$ | async) as data; else noData">
+<ng-container *ngIf="tableoptions && (data$ | async)?.length != 0 && (data$ | async) as data; else noData">
     <div class="relative left-0 right-0 flex flex-col w-full px-2 overflow-auto scrollbar-hide rounded-b-lg" cdk-scrollable #scrollableContent>
         <table mat-table [dataSource]="dataSource" matSort class="relative w-full">
             <thead>
@@ -19,7 +19,7 @@
                     </td>
                 </ng-container>
         
-                <ng-container *ngFor="let column of table.columns" matColumnDef="{{ column.name }}">
+                <ng-container *ngFor="let column of tableoptions.columns" matColumnDef="{{ column.name }}">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable" [ngClass]="{'hidden': column.hidden}"> {{ column.header }} </th>
                     <td mat-cell *matCellDef="let element" [ngClass]="{'hidden': column.hidden}">
                         <ng-container *ngIf="(isEditable$ | async); else notEditable">
@@ -64,7 +64,7 @@
                         </button>
                         
                         <mat-menu #menu="matMenu">
-                            <ng-container *ngFor="let action of table.actions">
+                            <ng-container *ngFor="let action of tableoptions.actions">
                                 <button mat-menu-item class="!flex items-center" (click)="clickAction(element.id, action.action)">
                                     <div class="flex flex-row">
                                         <div class=" h-6 w-6 fill-dark">
@@ -77,9 +77,9 @@
                         </mat-menu>
                     </td>
                 </ng-container>
-                <tr mat-header-row *matHeaderRowDef="table.columnNames; sticky: true"></tr>
+                <tr mat-header-row *matHeaderRowDef="tableoptions.columnNames; sticky: true"></tr>
             </thead>
-            <tr mat-row *matRowDef="let row; columns: table.columnNames;" (click)="edit(row)"></tr>
+            <tr mat-row *matRowDef="let row; columns: tableoptions.columnNames;" (click)="edit(row)"></tr>
         </table>
         <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->
         <div [ngClass]="{'border-t border-borderline': dataSource.data.length > pageSize}">
@@ -94,7 +94,7 @@
             </mat-paginator>
         </div>
     </div>
-    <scroll-indicator [scrollableContent]="scrollableContent" [distance]="table.showPaginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>
+    <scroll-indicator [scrollableContent]="scrollableContent" [distance]="tableoptions.showPaginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>
 </ng-container>
 
 <ng-template #noData>
