@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 /**
- * This Pipe truncate the value parameter and returns it!
+ * This pipe truncate the value parameter and returns it!
  */
 @Pipe({
   name: 'truncate'

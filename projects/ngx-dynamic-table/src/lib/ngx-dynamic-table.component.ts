@@ -150,10 +150,15 @@ export class NgxDynamicTableComponent implements OnInit {
   }
 
   isSticky(id: string) {
-    const buttonToggleGroup: string[] = ['count', 'name']
+    const buttonToggleGroup: string[] = ['checkbox', 'count', 'name']
     return (buttonToggleGroup || []).indexOf(id) !== -1
   }
 
+  /**
+   * Set the datasource.filter to filter in table.
+   *
+   * @param filterText - Text to filter in table.
+   */
   textfilter(filterText: string) {
     this.dataSource.filter = filterText.trim().toLowerCase()
   }
@@ -169,9 +174,17 @@ export class NgxDynamicTableComponent implements OnInit {
   clickAction(id: string, action: TableActionEnum) {
     this.action.emit({ id, action })
   }
+
+  /**
+   * Emits a corresponding event to create an new row.
+   */
   create() {
     this.action.emit({ id: '', action: TableActionEnum.CREATE })
   }
+  /**
+   * Emits a corresponding event to edit an row.
+   * @param {string} row - The selected row.
+   */
   edit(row: any) {
     if (!this.isEditableInTable) this.action.emit({ row, action: TableActionEnum.EDIT })
   }

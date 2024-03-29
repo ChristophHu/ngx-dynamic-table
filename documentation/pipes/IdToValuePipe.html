@@ -130,6 +130,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This pipe transforms an id to a value.</p>
+
+            </p>
 
 
         <section data-compodoc="block-metadata">
@@ -169,14 +176,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="7"
-                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/pipes/id-to-value/id-to-value.pipe.ts:7</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">projects/ngx-dynamic-table/src/lib/pipes/id-to-value/id-to-value.pipe.ts:15</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>This function returns a readable value.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -187,6 +196,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -201,6 +211,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>value that should be transformed</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>kat</td>
@@ -213,6 +229,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>table with id and value</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -236,10 +258,18 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 
+/**
+ * This pipe transforms an id to a value.
+ */
 @Pipe({
   name: &#x27;idToValue&#x27;
 })
 export class IdToValuePipe implements PipeTransform {
+  /**
+   * This function returns a readable value.
+   * @param {string}  value - value that should be transformed
+   * @param {any[]}   kat   - table with id and value
+   */
   transform(value: string, kat: any[]): string {
     console.log(&#x27;kat: &#x27;, kat)
     let item &#x3D; kat.find((item: { id: string, bezeichnung: string }) &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; value)
