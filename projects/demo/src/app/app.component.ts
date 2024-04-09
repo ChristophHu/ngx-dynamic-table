@@ -7,6 +7,7 @@ import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tab
 import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
 import { CommonModule, DatePipe } from '@angular/common';
 import { CircularSpinnerComponent } from '../../../ngx-dynamic-table/src/lib/components/circular-spinner/circular-spinner.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { CircularSpinnerComponent } from '../../../ngx-dynamic-table/src/lib/com
     CircularSpinnerComponent,
     CommonModule,
     DatePipe,
+    MatMenuModule,
     NgxDynamicTableComponent,
     RouterOutlet
   ],
@@ -29,7 +31,8 @@ export class AppComponent implements OnInit, OnDestroy {
    * @type {boolean}
    */
   isVisible: boolean = false
-  isSpinnerVisible: boolean = true;
+  isSpinnerVisible: boolean = true
+  isCheckedAll: boolean = false
 
   private readonly _data = new BehaviorSubject<any[]>([])
   data$: Observable<any[]> = this._data.asObservable()
@@ -97,6 +100,10 @@ export class AppComponent implements OnInit, OnDestroy {
         break
       case TableActionEnum.CHECKALL:
         console.log('check all rows')
+        this.isCheckedAll = !this.isCheckedAll
+        this._data.value.forEach(row => {
+          row.checked = this.isCheckedAll
+        })
         break
       default:
         console.log('default action')
@@ -114,5 +121,9 @@ export class AppComponent implements OnInit, OnDestroy {
       { id: '4', name: 'Martin', date: '03.02.2023 00:00:59', ort: 'München', checked: false },
       { id: '5', name: 'Markus', date: '04.02.2023 00:00:59', ort: 'Köln', checked: false }
     ])
+  }
+
+  refreshTable() {
+    this.setData()
   }
 }
