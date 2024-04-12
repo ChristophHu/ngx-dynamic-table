@@ -6,9 +6,30 @@
           <p class="text-sm text-dark">Dies ist die Beschreibung zu dieser Tabelle.</p>
         </div>
         <div>
-          <button class="w-10 h-10 m-2 p-1 bg-secondary text-accent shadow-inner rounded-full cursor-pointer">
+          <button class="w-10 h-10 m-2 p-1 bg-secondary text-accent shadow-inner rounded-full cursor-pointer hover:bg-primary duration-200" [matMenuTriggerFor]="menu">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><line x1="4" y1="10" x2="20" y2="10" /><line x1="10" y1="4" x2="10" y2="20" /></svg>
           </button>
+
+          <mat-menu #menu="matMenu">
+            <!-- <ng-container *ngFor="let action of tableoptions.actions"> -->
+              <button mat-menu-item class="!flex items-center" (click)="refreshTable()">
+                <div class="flex flex-row">
+                  <div class=" h-6 w-6 fill-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                  </div>
+                  <span class="ml-4">Refresh</span>
+                </div>
+              </button>
+              <button mat-menu-item class="!flex items-center">
+                <div class="flex flex-row">
+                  <div class=" h-6 w-6 fill-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                  </div>
+                  <span class="ml-4">Reload</span>
+                </div>
+              </button>
+            <!-- </ng-container> -->
+          </mat-menu>
         </div>
       </div>
 
@@ -29,9 +50,9 @@
           @error {
             <div class="h-4 bg-tertiary">Error</div>
           }
-          <!-- <div class="debug-item-hide bg-tertiary text-dark text-xs border-t border-borderline">
+          <div class="debug-item-hide bg-tertiary text-dark text-xs border-t border-borderline">
             <pre class="p-2 bg-gradient-45 to-gray-600">{{ (data$ | async) | json }}</pre>
-          </div> -->
+          </div>
           <div class="h-2 bg-tertiary rounded-b-lg"></div>
         </div>
   </div>
