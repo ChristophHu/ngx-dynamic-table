@@ -9,7 +9,7 @@
     "test": "ng test",
     "publish": "npm run tw:preprocess && npm run ngx:build && npm run tw:copy && npm run ngx:publish",
 
-    "tw:preprocess": "tailwindcss -c ./projects/demo/tailwind.config.js -o ./projects/ngx-dynamic-table/src/lib/style/ngx-dynamic-table-tw.css",
+    "tw:preprocess": "tailwindcss -c ./projects/demo/tailwind.config.js -o ./projects/ngx-dynamic-table/src/lib/style/ngx-dynamic-table-tw.scss",
     "tw:copy": "cp -R ./projects/ngx-dynamic-table/src/lib/style ./dist/ngx-dynamic-table/lib/style",
     "ngx:build": "ng build ngx-dynamic-table",
     "ngx:publish": "cd dist/ngx-dynamic-table && npm publish --access public",
