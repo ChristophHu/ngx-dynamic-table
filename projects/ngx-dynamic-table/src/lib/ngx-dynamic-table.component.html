@@ -81,8 +81,8 @@
             </thead>
             <tr mat-row *matRowDef="let row; columns: tableoptions.columnNames;" (click)="edit(row)"></tr>
         </table>
-        <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->
         <div [ngClass]="{'border-t border-borderline': dataSource.data.length > pageSize}">
+            <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->
             <mat-paginator
                 nxtMobilePagination
                 [appCustomLength]="dataSource.data.length"
