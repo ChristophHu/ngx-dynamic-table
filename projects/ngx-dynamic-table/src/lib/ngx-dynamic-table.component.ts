@@ -82,6 +82,7 @@ export class NgxDynamicTableComponent implements OnInit {
   dataSource: any
   pageSizeOptions: number[] = [1, 5, 10, 15, 20, 50, 100]
   isEditable$: Observable<boolean> = this._dynamicTableService.isEditable$
+  isInitialized: boolean = false
 
   constructor(private _dynamicTableService: DynamicTableService) {
     this.dataSource = new MatTableDataSource([])
@@ -90,7 +91,7 @@ export class NgxDynamicTableComponent implements OnInit {
   ngOnInit(): void {
     this.data$.subscribe({
       next: (data: any[]) => {  
-        console.log('data', data)
+        // console.log('data', data)
         if (data && data.length > 0) {
           setTimeout(() => {
             if (this.tableoptions.showPaginator && this.paginator) {
@@ -101,7 +102,7 @@ export class NgxDynamicTableComponent implements OnInit {
               this.dataSource.paginator = this.paginator
             }
   
-            if (this.tableoptions.sortColumn && this.tableoptions.sortStart) {
+            if (this.tableoptions.sortColumn && this.tableoptions.sortStart && !this.isInitialized) {
               if (this.sort != undefined) this.sort.sort(({ id: this.tableoptions.sortColumn, start: this.tableoptions.sortStart }) as MatSortable)
             }
             this.dataSource.sort = this.sort
@@ -125,6 +126,7 @@ export class NgxDynamicTableComponent implements OnInit {
   
             this._dynamicTableService.textFilter$.subscribe((data) => this.textfilter(data))
           }, 20)
+          this.isInitialized = true
         }
       },
       error(err) {

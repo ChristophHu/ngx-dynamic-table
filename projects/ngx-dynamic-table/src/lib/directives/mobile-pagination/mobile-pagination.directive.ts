@@ -177,7 +177,7 @@ export class MobilePaginationDirective implements AfterViewInit, OnChanges {
     const text = this.renderer.createText(String(i + 1))
 
     this.renderer.addClass(bubbleButton, 'nxt-bubble')
-    this.renderer.setStyle(bubbleButton, 'margin-right', '8px')
+    // this.renderer.setStyle(bubbleButton, 'margin-right', '8px')
     this.renderer.appendChild(bubbleButton, text)
 
     this.renderer.listen(bubbleButton, 'click', () => {

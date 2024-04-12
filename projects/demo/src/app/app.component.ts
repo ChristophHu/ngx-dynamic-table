@@ -124,6 +124,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   refreshTable() {
-    this.setData()
+    this._data.next([
+      { id: '1', name: 'Tim', date: '01.01.2024 00:00:59', ort: 'Berlin', checked: false },
+      { id: '2', name: 'Tom', date: '01.01.2023 00:00:59', ort: 'Hamburg', checked: false },
+      { id: '3', name: 'Thomas', date: '01.02.2023 00:00:59', ort: 'Dresden', checked: false },
+      { id: '4', name: 'Martin', date: '03.02.2023 00:00:59', ort: 'München', checked: false },
+      { id: '5', name: 'Markus', date: '04.02.2023 00:00:59', ort: 'Köln', checked: false }
+    ])
   }
 }
