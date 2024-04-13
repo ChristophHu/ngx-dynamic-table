@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
-import { icons } from './icons';
+import { TableIcons } from './table-icons';
 
 /**
  * This component set the icons from the icons.ts file to the innerHTML of the element. In use of tailwindcss the classes will style the icons.
@@ -8,7 +8,7 @@ import { icons } from './icons';
  * <icons class="w-8 h-8 stroke-1 stroke-current" name="{{ action.icon }}"></icons>
 */
 @Component({
-  selector: 'icons',
+  selector: 'table-icons',
   standalone: true,
   imports: [],
   template: `
@@ -17,13 +17,13 @@ import { icons } from './icons';
   styles: ``,
   encapsulation: ViewEncapsulation.Emulated
 })
-export class IconsComponent {
+export class TableIconsComponent {
     /**
    * The iconname to get from icons.ts to set to the innerHTML.
    * @type {string}
    */
   @Input() set name(iconName: string) {
-    this.renderer.setProperty(this.element.nativeElement,'innerHTML', icons[iconName] || null)
+    this.renderer.setProperty(this.element.nativeElement,'innerHTML', TableIcons[iconName] || null)
   }
   
   /**

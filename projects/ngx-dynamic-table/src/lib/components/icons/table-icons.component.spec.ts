@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconsComponent } from './icons.component';
+import { IconsComponent } from './table-icons.component';
 
 describe('IconsComponent', () => {
   let component: IconsComponent;

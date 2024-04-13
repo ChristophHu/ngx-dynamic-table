@@ -59,7 +59,7 @@
                     <td mat-cell *matCellDef="let element">
                         <button [matMenuTriggerFor]="menu" class="w-full">
                             <div class=" h-6 w-6 text-dark fill-dark">
-                                <icons class="w-8 h-8 stroke-1 stroke-current" name="dots"></icons>
+                                <table-icons class="w-8 h-8 stroke-1 stroke-current" name="dots"></table-icons>
                             </div>
                         </button>
                         
@@ -68,7 +68,7 @@
                                 <button mat-menu-item class="!flex items-center" (click)="clickAction(element.id, action.action)">
                                     <div class="flex flex-row">
                                         <div class=" h-6 w-6 fill-dark">
-                                            <icons class="w-8 h-8 stroke-1 stroke-current" name="{{ action.icon }}"></icons>
+                                            <table-icons class="w-8 h-8 stroke-1 stroke-current" name="{{ action.icon }}"></table-icons>
                                         </div>
                                         <span class="ml-4">{{ action.name }}</span>
                                     </div>
@@ -101,17 +101,17 @@
     <div class="flex h-12 pt-2 w-full items-center justify-center text-dark">
         <div *ngIf="!(data$ | async)" class="text-xl">
             <div class="w-8 h-8 fill-blue-600 text-gray-200 animate-spin">
-                <icons class="" name="spinner"></icons>
+                <table-icons class="" name="spinner"></table-icons>
             </div>
             <span class="sr-only">Loading...</span>
         </div>
         <div *ngIf="(data$ | async)?.length == 0" class="!flex text-xl">
             <div class="w-8 h-8">
-                <icons class="stroke-2 stroke-current" name="alert-triangle"></icons>
+                <table-icons class="stroke-2 stroke-current" name="alert-triangle"></table-icons>
             </div>
             <span class="mx-2">Es konnten keine Daten geladen werden.</span>
             <button class="w-8 h-8 text-accent" (click)="refresh()">
-                <icons class="stroke-2 stroke-current" name="refresh"></icons>
+                <table-icons class="stroke-2 stroke-current" name="refresh"></table-icons>
             </button>
         </div>
     </div>
