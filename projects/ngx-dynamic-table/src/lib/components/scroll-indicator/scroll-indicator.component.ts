@@ -1,7 +1,7 @@
 import { NgIf, NgStyle } from '@angular/common';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IconsComponent } from '../icons/icons.component';
+import { TableIconsComponent } from '../icons/table-icons.component';
 
 @Component({
   selector: 'scroll-indicator',
@@ -9,7 +9,7 @@ import { IconsComponent } from '../icons/icons.component';
   imports: [
     NgIf,
     NgStyle,
-    IconsComponent
+    TableIconsComponent
   ],
   templateUrl: './scroll-indicator.component.html',
   styleUrls: ['./scroll-indicator.component.sass']

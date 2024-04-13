@@ -15,7 +15,7 @@ import { MatMenuModule } from '@angular/material/menu'
 import { ScrollIndicatorComponent } from './components/scroll-indicator/scroll-indicator.component'
 import { StickyDirective } from './directives/sticky/sticky.directive'
 import { MobilePaginationDirective } from './directives/mobile-pagination/mobile-pagination.directive'
-import { IconsComponent } from './components/icons/icons.component'
+import { TableIconsComponent } from './components/icons/table-icons.component'
 
 export const rowsAnimation = trigger('rowsAnimation', [
   transition('void => *', [
@@ -41,7 +41,7 @@ export const rowsAnimation = trigger('rowsAnimation', [
     CommonModule,
     DynamicPipe,
     FormsModule,
-    IconsComponent,
+    TableIconsComponent,
     MatMenuModule,
     MatPaginatorModule,
     MatSortModule,

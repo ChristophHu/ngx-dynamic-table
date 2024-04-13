@@ -1,14 +1,14 @@
 import { Component } from '@angular/core'
 import { SpinnerComponent } from './spinner'
 import { CommonModule } from '@angular/common'
-import { IconsComponent } from '../icons/icons.component'
+import { TableIconsComponent } from '../icons/table-icons.component'
 
 @Component({
   selector: 'circular-spinner',
   standalone: true,
   imports: [
     CommonModule,
-    IconsComponent
+    TableIconsComponent
   ],
   templateUrl: './circular-spinner.component.html',
   styleUrls: ['./circular-spinner.component.sass']
