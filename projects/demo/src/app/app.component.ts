@@ -101,7 +101,7 @@ export class AppComponent implements OnInit, OnDestroy {
       case TableActionEnum.CHECKALL:
         console.log('check all rows')
         this.isCheckedAll = !this.isCheckedAll
-        this._data.value.forEach(row => {
+        this._data.value.forEach((row: any) => {
           row.checked = this.isCheckedAll
         })
         break

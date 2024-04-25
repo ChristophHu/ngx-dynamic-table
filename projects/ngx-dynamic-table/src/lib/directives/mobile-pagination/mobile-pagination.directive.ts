@@ -111,6 +111,7 @@ export class MobilePaginationDirective implements AfterViewInit, OnChanges {
 
     this.renderer.setStyle(itemsPerPage, 'display', 'none')
 
+    this.renderer.setStyle(howManyDisplayedEl, 'display', 'none')
     this.renderer.setStyle(howManyDisplayedEl, 'position', 'absolute')
     this.renderer.setStyle(howManyDisplayedEl, 'left', '0')
 
