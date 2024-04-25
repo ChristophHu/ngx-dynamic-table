@@ -13,6 +13,7 @@ export class MobilePaginationDirective implements AfterViewInit, OnChanges {
   @Input() renderButtonsNumber = 2
   @Input() appCustomLength: number = 0
   @Input() hideDefaultArrows = false
+  @Input() hideHowManyDisplayedEl = false
 
   private dotsEndRef!: HTMLElement
   private dotsStartRef!: HTMLElement
@@ -111,7 +112,7 @@ export class MobilePaginationDirective implements AfterViewInit, OnChanges {
 
     this.renderer.setStyle(itemsPerPage, 'display', 'none')
 
-    this.renderer.setStyle(howManyDisplayedEl, 'display', 'none')
+    if (this.hideHowManyDisplayedEl) this.renderer.setStyle(howManyDisplayedEl, 'display', 'none')
     this.renderer.setStyle(howManyDisplayedEl, 'position', 'absolute')
     this.renderer.setStyle(howManyDisplayedEl, 'left', '0')
 
