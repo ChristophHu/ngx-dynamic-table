@@ -52,7 +52,14 @@ export const rowsAnimation = trigger('rowsAnimation', [
     StickyDirective
   ],
   templateUrl: './ngx-dynamic-table.component.html',
-  styleUrls: ['./ngx-dynamic-table.component.sass']
+  styleUrls: ['./ngx-dynamic-table.component.sass'],
+  // animations: [
+  //   trigger('detailExpand', [
+  //     state('collapsed,void', style({height: '0px', minHeight: '0'})),
+  //     state('expanded', style({height: '*'})),
+  //     transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+  //   ]),
+  // ],
 })
 export class NgxDynamicTableComponent implements OnInit {
   /**
@@ -64,6 +71,10 @@ export class NgxDynamicTableComponent implements OnInit {
   @Input() isEditableInTable: boolean = false
   @Input() pageSize: number = 10
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
+
+  // expandable
+  columnsToDisplayWithExpand = ['expand']
+  expandedElement: any
 
   /**
    * @description default class of NgxDynamicTableComponent
@@ -154,6 +165,11 @@ export class NgxDynamicTableComponent implements OnInit {
   isSticky(id: string) {
     const buttonToggleGroup: string[] = ['checkbox', 'count', 'name']
     return (buttonToggleGroup || []).indexOf(id) !== -1
+  }
+
+  expand(el: any) {
+    this.expandedElement = this.expandedElement === el ? null : el
+    console.log(this.expandedElement)
   }
 
   /**

@@ -68,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
       { id: '4', name: 'ort', header: 'Ort', cell: 'ort', hidden: false, sortable: true },
     ],
     columnFilter: ['date', 'ort'],
-    columnNames: ['checkbox', 'count', 'name', 'date', 'ort', 'actions'],
+    columnNames: ['checkbox', 'count', 'name', 'date', 'ort', 'actions', 'expandedDetail'],
     showCheckbox: true,
     showCount: true,
     showPaginator: true,

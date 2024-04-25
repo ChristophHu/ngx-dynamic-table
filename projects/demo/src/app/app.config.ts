@@ -9,4 +9,4 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideRouter(routes)
   ]
-};
+}
