@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxDynamicTableComponent } from '../../../ngx-dynamic-table/src/lib/ngx-dynamic-table.component';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { Tableoptions } from '../../../ngx-dynamic-table/src/lib/models/tableoptions.model';
 import { TableActionReturn } from '../../../ngx-dynamic-table/src/lib/models/tableaction.model';
 import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/tableaction.enum';
@@ -55,6 +55,18 @@ export class AppComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe()
   }
 
+  // first table - easy table
+  easydata$: Observable<any[]> = of([
+    { date: '01.01.2024 00:00:59', description: 'Berlin' },
+    { date: '01.01.2023 00:00:59', description: 'Hamburg' },
+  ])
+  easytable: Tableoptions = {
+    columns: [
+      { id: '1', name: 'date', header: 'Datum/Zeit', cell: 'date', pipe: { name: DatePipe, args: 'dd.MM.YYYY HH:mm:ss'}, hidden: false, sortable: true },
+      { id: '2', name: 'description', header: 'Beschreibung', cell: 'description', hidden: false, sortable: true },
+    ]
+  }
+
   tableoptions: Tableoptions = {
     actions: [
       { name: 'delete', icon: 'trash', action: 1 },
@@ -68,9 +80,10 @@ export class AppComponent implements OnInit, OnDestroy {
       { id: '4', name: 'ort', header: 'Ort', cell: 'ort', hidden: false, sortable: true },
     ],
     columnFilter: ['date', 'ort'],
-    columnNames: ['checkbox', 'count', 'name', 'date', 'ort', 'actions', 'expandedDetail'],
+    columnNames: ['name', 'date', 'ort'],
+    isExpandable: true,
     showCheckbox: true,
-    showCount: true,
+    showCount: false,
     showPaginator: true,
     sortColumn: 'date',
     sortStart: 'asc'

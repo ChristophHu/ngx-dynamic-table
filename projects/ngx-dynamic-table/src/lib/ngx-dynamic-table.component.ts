@@ -1,5 +1,5 @@
 import { animate, sequence, style, transition, trigger } from '@angular/animations'
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, TemplateRef } from '@angular/core'
 import { Tableoptions } from './models/tableoptions.model'
 import { BehaviorSubject, Observable, of } from 'rxjs'
 import { TableActionReturn } from './models/tableaction.model'
@@ -77,6 +77,7 @@ export class NgxDynamicTableComponent implements OnInit {
   // expandable
   columnsToDisplayWithExpand = ['expand']
   expandedElement: any
+  @Input() elementTemplate!: TemplateRef<HTMLElement>
 
   /**
    * @description default class of NgxDynamicTableComponent
@@ -107,6 +108,8 @@ export class NgxDynamicTableComponent implements OnInit {
         // console.log('data', data)
         if (data && data.length > 0) {
           setTimeout(() => {
+            this.setTableColumnNames(data[0])
+            
             if (this.tableoptions.showPaginator && this.paginator) {
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'
@@ -131,7 +134,7 @@ export class NgxDynamicTableComponent implements OnInit {
   
             this.dataSource.filterPredicate = (data: any, filter: string) => {
               let match: boolean = false
-              this.tableoptions.columnFilter.forEach((element: string) => {
+              this.tableoptions.columnFilter?.forEach((element: string) => {
                 match = (match || data[element].trim().toLowerCase().includes(filter)) // ToDo: error on filter "tr" in klarmeldung
               })
               return match
@@ -146,6 +149,13 @@ export class NgxDynamicTableComponent implements OnInit {
         console.log(err)
       }
     })
+  }
+
+  setTableColumnNames(data: any): void {
+    if (!this.tableoptions.columnNames) this.tableoptions.columnNames = Object.keys(data)
+    if (this.tableoptions.showCheckbox) this.tableoptions.columnNames = ['checkbox', ...this.tableoptions.columnNames]
+    if (this.tableoptions.showCount) this.tableoptions.columnNames = ['count', ...this.tableoptions.columnNames]
+    if (this.tableoptions.isExpandable) this.tableoptions.columnNames = [...this.tableoptions.columnNames, 'expand']
   }
 
   getRangeLabel = (page: number, pageSize: number, length: number): string => {
@@ -171,7 +181,6 @@ export class NgxDynamicTableComponent implements OnInit {
 
   expand(el: any) {
     this.expandedElement = this.expandedElement === el ? null : el
-    console.log(this.expandedElement)
   }
 
   /**
