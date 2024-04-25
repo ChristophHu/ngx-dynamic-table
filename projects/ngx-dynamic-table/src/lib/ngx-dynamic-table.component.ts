@@ -16,16 +16,17 @@ import { ScrollIndicatorComponent } from './components/scroll-indicator/scroll-i
 import { StickyDirective } from './directives/sticky/sticky.directive'
 import { MobilePaginationDirective } from './directives/mobile-pagination/mobile-pagination.directive'
 import { TableIconsComponent } from './components/icons/table-icons.component'
+import { state } from '@angular/animations'
 
-export const rowsAnimation = trigger('rowsAnimation', [
-  transition('void => *', [
-    style({ height: '*', opacity: '0', transform: 'translateX(-550px)', 'box-shadow': 'none' }),
-    sequence([
-      animate(".35s ease", style({ height: '*', opacity: '.2', transform: 'translateX(0)', 'box-shadow': 'none'  })),
-      animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)' }))
-    ])
-  ])
-])
+// export const rowsAnimation = trigger('rowsAnimation', [
+//   transition('void => *', [
+//     style({ height: '*', opacity: '0', transform: 'translateX(-550px)', 'box-shadow': 'none' }),
+//     sequence([
+//       animate(".35s ease", style({ height: '*', opacity: '.2', transform: 'translateX(0)', 'box-shadow': 'none'  })),
+//       animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)' }))
+//     ])
+//   ])
+// ])
 
 /**
  * This component to demonstrate Compodoc documentation.
@@ -53,13 +54,14 @@ export const rowsAnimation = trigger('rowsAnimation', [
   ],
   templateUrl: './ngx-dynamic-table.component.html',
   styleUrls: ['./ngx-dynamic-table.component.sass'],
-  // animations: [
-  //   trigger('detailExpand', [
-  //     state('collapsed,void', style({height: '0px', minHeight: '0'})),
-  //     state('expanded', style({height: '*'})),
-  //     transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-  //   ]),
-  // ],
+  animations: [
+    trigger('collapse', [
+      state('true', style({ height: '*' })),
+      state('false', style({ height: '0', visibility: 'hidden' })),
+      transition('false => true', animate('300ms ease')),
+      transition('true => false', animate('300ms ease'))
+    ])
+  ],
 })
 export class NgxDynamicTableComponent implements OnInit {
   /**
