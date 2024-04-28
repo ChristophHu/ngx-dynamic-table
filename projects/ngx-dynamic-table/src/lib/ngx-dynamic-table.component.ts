@@ -156,6 +156,7 @@ export class NgxDynamicTableComponent implements OnInit {
     if (this.tableoptions.showCheckbox) this.tableoptions.columnNames = ['checkbox', ...this.tableoptions.columnNames]
     if (this.tableoptions.showCount) this.tableoptions.columnNames = ['count', ...this.tableoptions.columnNames]
     if (this.tableoptions.showUnread) this.tableoptions.columnNames = ['unread', ...this.tableoptions.columnNames]
+    if (this.tableoptions.showSortRow) this.tableoptions.columnNames = ['sortrow', ...this.tableoptions.columnNames]
     if (this.tableoptions.isExpandable) this.tableoptions.columnNames = [...this.tableoptions.columnNames, 'expand']
   }
 

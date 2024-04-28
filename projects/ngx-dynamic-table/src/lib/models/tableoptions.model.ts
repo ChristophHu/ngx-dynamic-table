@@ -10,6 +10,7 @@ export interface Tableoptions {
     showCheckbox?   : boolean
     showCount?      : boolean
     showPaginator?  : boolean
+    showSortRow?    : boolean
     showUnread?     : boolean
     sortColumn?     : string
     sortStart?      : 'asc' | 'desc'
