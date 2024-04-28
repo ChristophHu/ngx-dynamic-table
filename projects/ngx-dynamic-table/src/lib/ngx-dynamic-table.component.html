@@ -1,6 +1,14 @@
 <ng-container *ngIf="tableoptions && (data$ | async)?.length != 0 && (data$ | async) as data; else noData">
     <div class="relative left-0 right-0 flex flex-col w-full px-2 overflow-auto scrollbar-hide rounded-b-lg" cdk-scrollable #scrollableContent>
         <table mat-table [dataSource]="dataSource" matSort class="relative w-full" multiTemplateDataRows>
+            <ng-container matColumnDef="unread">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                    <div class=" h-6 w-6 text-transparent fill-accent cursor-pointer">
+                        <table-icons class="w-8 h-8 stroke-1 stroke-current" name="dot"></table-icons>
+                    </div>
+                </td>
+            </ng-container>
             <ng-container matColumnDef="count">
                 <th mat-header-cell *matHeaderCellDef> Nr. </th>
                 <td mat-cell *matCellDef="let element; let i = index">{{ this.paginator!.pageIndex == 0 ? i + 1 : 1 + i + this.paginator!.pageIndex * this.paginator!.pageSize }}</td>
@@ -97,7 +105,7 @@
             <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="tableoptions.columnNames?.length">
                     <div [@collapse]="element == expandedElement">
-                        <!-- <ng-container *ngTemplateOutlet="expandedContent"></ng-container> -->
+                        <ng-container *ngTemplateOutlet="expandedContent"></ng-container>
                         <ng-content [ngTemplateOutlet]="elementTemplate" [ngTemplateOutletContext]="{ $implicit: element }"></ng-content>
                     </div>
                 </td>
@@ -108,16 +116,7 @@
         </table>
         <div [ngClass]="{'border-t border-borderline': dataSource.data.length > pageSize}">
             <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->
-            <mat-paginator
-                nxtMobilePagination
-                [appCustomLength]="dataSource.data.length"
-                [hideHowManyDisplayedEl]="true"
-                [length]="dataSource.data.length"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="pageSizeOptions"
-                (page)="updatePaginator()"
-                >
-            </mat-paginator>
+            <mat-paginator nxtMobilePagination [appCustomLength]="dataSource.data.length" [hideHowManyDisplayedEl]="true" [length]="dataSource.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator>
         </div>
     </div>
     <scroll-indicator [scrollableContent]="scrollableContent" [distance]="tableoptions.showPaginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>

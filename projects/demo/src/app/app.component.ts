@@ -85,6 +85,7 @@ export class AppComponent implements OnInit, OnDestroy {
     showCheckbox: true,
     showCount: false,
     showPaginator: true,
+    showUnread: true,
     sortColumn: 'date',
     sortStart: 'asc'
   }
