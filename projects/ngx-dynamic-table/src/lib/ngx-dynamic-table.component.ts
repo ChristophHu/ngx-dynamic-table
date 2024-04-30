@@ -17,6 +17,7 @@ import { StickyDirective } from './directives/sticky/sticky.directive'
 import { MobilePaginationDirective } from './directives/mobile-pagination/mobile-pagination.directive'
 import { TableIconsComponent } from './components/icons/table-icons.component'
 import { state } from '@angular/animations'
+import { ExpandTemplateService } from './services/expand-template.service'
 
 // export const rowsAnimation = trigger('rowsAnimation', [
 //   transition('void => *', [
@@ -77,7 +78,6 @@ export class NgxDynamicTableComponent implements OnInit {
   // expandable
   // columnsToDisplayWithExpand = ['expand']
   expandedElement: any
-  @Input() elementTemplate!: TemplateRef<HTMLElement>
 
   /**
    * @description default class of NgxDynamicTableComponent
@@ -98,7 +98,7 @@ export class NgxDynamicTableComponent implements OnInit {
   isEditable$: Observable<boolean> = this._dynamicTableService.isEditable$
   isInitialized: boolean = false
 
-  constructor(private _dynamicTableService: DynamicTableService) {
+  constructor(private _dynamicTableService: DynamicTableService, private _expandTemplateService: ExpandTemplateService) {
     this.dataSource = new MatTableDataSource([])
   }
   
@@ -183,6 +183,9 @@ export class NgxDynamicTableComponent implements OnInit {
 
   expand(el: any) {
     this.expandedElement = this.expandedElement === el ? null : el
+  }
+  getExpandTemplate(temp: string): TemplateRef<any> {
+    return this._expandTemplateService.get(temp)
   }
 
   /**

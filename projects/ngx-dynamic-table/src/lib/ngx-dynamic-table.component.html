@@ -4,7 +4,7 @@
             <ng-container matColumnDef="sortrow">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element; let i = index">
-                    <div class=" h-6 w-6 text-borderline cursor-pointer">
+                    <div class=" h-6 w-6 text-borderline cursor-grab">
                         <table-icons class="w-8 h-8 stroke-1 stroke-current" name="dots-block"></table-icons>
                     </div>
                 </td>
@@ -111,10 +111,9 @@
             </ng-container>
 
             <ng-container matColumnDef="expandedDetail">
-                <td mat-cell *matCellDef="let element" [attr.colspan]="tableoptions.columnNames?.length">
-                    <div [@collapse]="element == expandedElement">
-                        <ng-container *ngTemplateOutlet="expandedContent"></ng-container>
-                        <ng-content [ngTemplateOutlet]="elementTemplate" [ngTemplateOutletContext]="{ $implicit: element }"></ng-content>
+                <td mat-cell *matCellDef="let object" [attr.colspan]="tableoptions.columnNames?.length">
+                    <div [@collapse]="object == expandedElement">
+                        <ng-container *ngTemplateOutlet="getExpandTemplate('expandtemplate'); context: { object }"></ng-container>
                     </div>
                 </td>
             </ng-container>
@@ -148,8 +147,4 @@
             </button>
         </div>
     </div>
-</ng-template>
-
-<ng-template #expandedContent let-item>
-    New Content
 </ng-template>
