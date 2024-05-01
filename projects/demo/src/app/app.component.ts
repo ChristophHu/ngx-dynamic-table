@@ -8,7 +8,7 @@ import { TableActionEnum } from '../../../ngx-dynamic-table/src/lib/models/table
 import { CommonModule, DatePipe } from '@angular/common';
 import { CircularSpinnerComponent } from '../../../ngx-dynamic-table/src/lib/components/circular-spinner/circular-spinner.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { ExpandTemplateService } from '../../../ngx-dynamic-table/src/public-api';
+import { DynamicTableService, ExpandTemplateService } from '../../../ngx-dynamic-table/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -42,12 +42,11 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   destroy$: Subject<boolean> = new Subject<boolean>()
 
-  constructor(private _expandTemplateService: ExpandTemplateService) {
+  constructor(private _dynamicTableService: DynamicTableService, private _expandTemplateService: ExpandTemplateService) {
     this.setData()
   }
 
   ngAfterViewInit(): void {
-    console.log(this.expandtemplate)
     this._expandTemplateService.add('expandtemplate', this.expandtemplate)
   }
 
@@ -150,6 +149,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   refreshTable() {
     this._data.next(this.data)
+    this._dynamicTableService.setTextFilter('en')
   }
 
   useExpandTemplate(id: string) {
