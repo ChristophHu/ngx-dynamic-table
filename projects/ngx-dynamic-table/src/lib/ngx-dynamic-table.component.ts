@@ -157,7 +157,6 @@ export class NgxDynamicTableComponent implements OnInit {
     if (this.tableoptions.unread) this.tableoptions.columnNames = ['unread', ...this.tableoptions.columnNames]
     if (this.tableoptions.sortRowManual) this.tableoptions.columnNames = ['sortrow', ...this.tableoptions.columnNames]
     if (this.tableoptions.isExpandable) this.tableoptions.columnNames = [...this.tableoptions.columnNames, 'expand']
-    console.log('setTableColumnNames', this.tableoptions.columnNames)
     this.tableoptions.columnNames = [...new Set(this.tableoptions.columnNames)]
   }
 

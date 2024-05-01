@@ -149,7 +149,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   refreshTable() {
     this._data.next(this.data)
-    this._dynamicTableService.setTextFilter('en')
   }
 
   useExpandTemplate(id: string) {
@@ -157,6 +156,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.data = this.data.filter((el: any) => el.id != id)
     item.checked = true
     this.data = [...this.data, item]
-    console.log(this.data)
+  }
+
+  setTextfilter(filterText: any) {
+    this._dynamicTableService.setTextFilter(filterText)
+  }
+  resetTextfilter() {
+    this._dynamicTableService.setTextFilter('')
   }
 }

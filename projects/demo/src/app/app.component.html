@@ -37,7 +37,18 @@
         <h2 class="text-darker text-2xl font-bold">Tabelle</h2>
         <p class="text-sm text-dark">Dies ist die Beschreibung zu dieser Tabelle.</p>
       </div>
-      <div>
+      <div class="flex flex-row items-center">
+        <div class="">
+          <div class="relative mt-1 flex items-center">
+            <input type="text" id="textfilter" class="bg-input text-darker disabled:text-disabled placeholder:text-placeholder focus:border-static_gray border-borderline w-full p-3 border rounded focus:outline-none text-sm font-medium leading-none disabled:pointer-events-none" placeholder="suchen" (blur)="setTextfilter(textfilter.value)" #textfilter />
+            <div class="nxt_input_action_icon absolute h-full flex flex-row right-0 items-center justify-center">
+                <div class="grid h-8 w-8 stroke-2 place-items-center cursor-pointer" (click)="textfilter.value = ''; setTextfilter(textfilter.value)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                </div>
+            </div>
+        </div>
+        </div>
+
         <button class="w-10 h-10 m-2 p-1 bg-secondary text-accent shadow-inner rounded-full cursor-pointer hover:bg-primary duration-200" [matMenuTriggerFor]="menu">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><line x1="4" y1="10" x2="20" y2="10" /><line x1="10" y1="4" x2="10" y2="20" /></svg>
         </button>
