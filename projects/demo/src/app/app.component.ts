@@ -98,11 +98,11 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     columnFilter: ['date', 'ort'],
     columnNames: ['name', 'date', 'ort'],
     isExpandable: true,
-    showCheckbox: true,
-    showCount: false,
-    showPaginator: true,
-    showSortRow: true,
-    showUnread: true,
+    checkbox: true,
+    count: false,
+    paginator: true,
+    sortRowManual: false,
+    unread: false,
     sortColumn: 'date',
     sortStart: 'asc'
   }

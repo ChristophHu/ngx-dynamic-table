@@ -7,11 +7,11 @@ export interface Tableoptions {
     actions?        : TableAction[]
     columnFilter?   : string[]
     isExpandable?   : boolean
-    showCheckbox?   : boolean
-    showCount?      : boolean
-    showPaginator?  : boolean
-    showSortRow?    : boolean
-    showUnread?     : boolean
+    checkbox?       : boolean | { show: boolean, sticky: boolean }
+    count?          : boolean | { show: boolean, sticky: boolean }
+    paginator?      : boolean | { show: boolean, position: 'start' | 'end' }
+    sortRowManual?  : boolean | { show: boolean, sticky: boolean }
+    unread?         : boolean | { show: boolean, sticky: boolean }
     sortColumn?     : string
     sortStart?      : 'asc' | 'desc'
 }

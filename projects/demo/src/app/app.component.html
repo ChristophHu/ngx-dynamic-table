@@ -91,15 +91,16 @@
 <ng-template #expandtemplate let-object="object">
     <div class="nxt_input flex flex-col w-full">
       <label class="nxt_input_label my-2 text-sm leading-none">Beschreibung</label>
-      <div class="flex flex-row">
+      <!-- <div class="flex flex-row"> -->
         <div class="nxt_input_area flex flex-row w-full my-2 border border-borderline rounded">
           <div class="relative h-20 w-full">
-              <textarea [id]="'expandtemplate' + object.key" class="absolute inset-0 pt-3 px-3 bg-transparent text-sm font-medium leading-none rounded scrollbar-hide" cols="30" rows="3" [value]="object.description"></textarea>
+            <textarea [id]="'expandtemplate' + object.key" class="absolute inset-0 pt-3 px-3 bg-transparent text-sm font-medium leading-none rounded scrollbar-hide" cols="30" rows="3" [value]="object.description"></textarea>
           </div>
-        </div>
-          <button class="h-20 w-12 my-2 p-2 border border-accent text-accent rounded">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          <button class="h-20 w-12 m-2 p-2 border border-accent text-accent rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
           </button>
-      </div>
+        </div>
+
+      <!-- </div> -->
   </div>
 </ng-template>

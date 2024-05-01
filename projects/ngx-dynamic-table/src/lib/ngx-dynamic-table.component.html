@@ -1,15 +1,15 @@
 <ng-container *ngIf="tableoptions && (data$ | async)?.length != 0 && (data$ | async) as data; else noData">
-    <div class="relative left-0 right-0 flex flex-col w-full px-2 overflow-auto scrollbar-hide rounded-b-lg" cdk-scrollable #scrollableContent>
+    <div class="relative left-0 right-0 flex flex-col w-full overflow-auto scrollbar-hide rounded-b-lg" cdk-scrollable #scrollableContent>
         <table mat-table [dataSource]="dataSource" matSort class="relative w-full" multiTemplateDataRows>
-            <ng-container matColumnDef="sortrow">
+            <ng-container matColumnDef="sortrow" [sticky]="tableoptions.sortRowManual">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element; let i = index">
-                    <div class=" h-6 w-6 text-borderline cursor-grab">
-                        <table-icons class="w-8 h-8 stroke-1 stroke-current" name="dots-block"></table-icons>
+                    <div class="absolute h-6 w-6 -my-3 opacity-0 bg-tertiary text-borderline group-hover:opacity-100 transition-opacity ease-in-out duration-500 cursor-grab">
+                        <table-icons class="stroke-1 stroke-current" name="dots-block"></table-icons>
                     </div>
                 </td>
             </ng-container>
-            <ng-container matColumnDef="unread">
+            <ng-container matColumnDef="unread" [sticky]="tableoptions.unread">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element; let i = index">
                     <div class=" h-6 w-6 text-transparent fill-accent cursor-pointer">
@@ -17,19 +17,23 @@
                     </div>
                 </td>
             </ng-container>
-            <ng-container matColumnDef="count">
+            <ng-container matColumnDef="count" [sticky]="tableoptions.count">
                 <th mat-header-cell *matHeaderCellDef> Nr. </th>
                 <td mat-cell *matCellDef="let element; let i = index">{{ this.paginator!.pageIndex == 0 ? i + 1 : 1 + i + this.paginator!.pageIndex * this.paginator!.pageSize }}</td>
             </ng-container>
-            <ng-container matColumnDef="checkbox">
+            <ng-container matColumnDef="checkbox" [sticky]="tableoptions.checkbox">
                 <th mat-header-cell *matHeaderCellDef>
-                    <div class="grid w-5 h-5 bg-white dark:bg-gray-800 place-items-center rounded-sm relative" (click)="checkAll()">
-                        <input type="checkbox" class="w-full h-full focus:outline-none cursor-pointer" />
+                    <div class="p-2">
+                        <div class="w-5 h-5 bg-light rounded-sm" (click)="checkAll()">
+                            <input type="checkbox" class="w-full h-full focus:outline-none cursor-pointer" />
+                        </div>
                     </div>
                 </th>
                 <td mat-cell *matCellDef="let element; let i = index">
-                    <div class="my-2 mr-2 bg-light dark:bg-gray-800 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative" (click)="check(element)">
-                        <input type="checkbox" class="w-full h-full focus:outline-none cursor-pointer" [checked]="element['checked']"/>
+                    <div class="p-2">
+                        <div class="w-5 h-5 bg-light rounded-sm" (click)="check(element)">
+                            <input type="checkbox" class="w-full h-full focus:outline-none cursor-pointer" [checked]="element['checked']"/>
+                        </div>
                     </div>
                 </td>
             </ng-container>
@@ -93,7 +97,7 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="expand">
+            <ng-container matColumnDef="expand" [sticky]="tableoptions.isExpandable">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
                     <button mat-icon-button (click)="expand(element); $event.stopPropagation()">
@@ -118,7 +122,7 @@
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="tableoptions.columnNames; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: tableoptions.columnNames;" (click)="edit(row)"></tr>
+            <tr mat-row *matRowDef="let row; columns: tableoptions.columnNames;" (click)="edit(row)" class="group"></tr>
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>
         <div [ngClass]="{'border-t border-borderline': dataSource.data.length > pageSize}">
@@ -126,7 +130,7 @@
             <mat-paginator nxtMobilePagination [appCustomLength]="dataSource.data.length" [hideHowManyDisplayedEl]="true" [length]="dataSource.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator>
         </div>
     </div>
-    <scroll-indicator [scrollableContent]="scrollableContent" [distance]="tableoptions.showPaginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>
+    <scroll-indicator [scrollableContent]="scrollableContent" [distance]="tableoptions.paginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>
 </ng-container>
 
 <ng-template #noData>

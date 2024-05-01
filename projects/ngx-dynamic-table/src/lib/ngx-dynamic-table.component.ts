@@ -50,8 +50,7 @@ import { ExpandTemplateService } from './services/expand-template.service'
     MatTableModule,
     MobilePaginationDirective,
     ReactiveFormsModule,
-    ScrollIndicatorComponent,
-    StickyDirective
+    ScrollIndicatorComponent
   ],
   templateUrl: './ngx-dynamic-table.component.html',
   styleUrls: ['./ngx-dynamic-table.component.sass'],
@@ -110,7 +109,7 @@ export class NgxDynamicTableComponent implements OnInit {
           setTimeout(() => {
             this.setTableColumnNames(data[0])
             
-            if (this.tableoptions.showPaginator && this.paginator) {
+            if (this.tableoptions.paginator && this.paginator) {
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'
               this.paginator._intl.previousPageLabel = 'Vorherige'
@@ -153,11 +152,12 @@ export class NgxDynamicTableComponent implements OnInit {
 
   setTableColumnNames(data: any): void {
     if (!this.tableoptions.columnNames) this.tableoptions.columnNames = Object.keys(data)
-    if (this.tableoptions.showCheckbox) this.tableoptions.columnNames = ['checkbox', ...this.tableoptions.columnNames]
-    if (this.tableoptions.showCount) this.tableoptions.columnNames = ['count', ...this.tableoptions.columnNames]
-    if (this.tableoptions.showUnread) this.tableoptions.columnNames = ['unread', ...this.tableoptions.columnNames]
-    if (this.tableoptions.showSortRow) this.tableoptions.columnNames = ['sortrow', ...this.tableoptions.columnNames]
+    if (this.tableoptions.checkbox) this.tableoptions.columnNames = ['checkbox', ...this.tableoptions.columnNames]
+    if (this.tableoptions.count) this.tableoptions.columnNames = ['count', ...this.tableoptions.columnNames]
+    if (this.tableoptions.unread) this.tableoptions.columnNames = ['unread', ...this.tableoptions.columnNames]
+    if (this.tableoptions.sortRowManual) this.tableoptions.columnNames = ['sortrow', ...this.tableoptions.columnNames]
     if (this.tableoptions.isExpandable) this.tableoptions.columnNames = [...this.tableoptions.columnNames, 'expand']
+    console.log(this.tableoptions.columnNames)
   }
 
   getRangeLabel = (page: number, pageSize: number, length: number): string => {
