@@ -2,8 +2,12 @@
  * Public API Surface of ngx-dynamic-table
  */
 
+// maincomponent
 export * from './lib/ngx-dynamic-table.component'
+
+// services
 export * from './lib/services/dynamic-table.service'
+export * from './lib/services/expand-template.service'
 
 // enums
 export * from './lib/models/tableaction.enum'

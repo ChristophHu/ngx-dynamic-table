@@ -1,5 +1,5 @@
 import { animate, sequence, style, transition, trigger } from '@angular/animations'
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, TemplateRef } from '@angular/core'
 import { Tableoptions } from './models/tableoptions.model'
 import { BehaviorSubject, Observable, of } from 'rxjs'
 import { TableActionReturn } from './models/tableaction.model'
@@ -16,16 +16,18 @@ import { ScrollIndicatorComponent } from './components/scroll-indicator/scroll-i
 import { StickyDirective } from './directives/sticky/sticky.directive'
 import { MobilePaginationDirective } from './directives/mobile-pagination/mobile-pagination.directive'
 import { TableIconsComponent } from './components/icons/table-icons.component'
+import { state } from '@angular/animations'
+import { ExpandTemplateService } from './services/expand-template.service'
 
-export const rowsAnimation = trigger('rowsAnimation', [
-  transition('void => *', [
-    style({ height: '*', opacity: '0', transform: 'translateX(-550px)', 'box-shadow': 'none' }),
-    sequence([
-      animate(".35s ease", style({ height: '*', opacity: '.2', transform: 'translateX(0)', 'box-shadow': 'none'  })),
-      animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)' }))
-    ])
-  ])
-])
+// export const rowsAnimation = trigger('rowsAnimation', [
+//   transition('void => *', [
+//     style({ height: '*', opacity: '0', transform: 'translateX(-550px)', 'box-shadow': 'none' }),
+//     sequence([
+//       animate(".35s ease", style({ height: '*', opacity: '.2', transform: 'translateX(0)', 'box-shadow': 'none'  })),
+//       animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)' }))
+//     ])
+//   ])
+// ])
 
 /**
  * This component to demonstrate Compodoc documentation.
@@ -48,11 +50,18 @@ export const rowsAnimation = trigger('rowsAnimation', [
     MatTableModule,
     MobilePaginationDirective,
     ReactiveFormsModule,
-    ScrollIndicatorComponent,
-    StickyDirective
+    ScrollIndicatorComponent
   ],
   templateUrl: './ngx-dynamic-table.component.html',
-  styleUrls: ['./ngx-dynamic-table.component.sass']
+  styleUrls: ['./ngx-dynamic-table.component.sass'],
+  animations: [
+    trigger('collapse', [
+      state('true', style({ height: '*' })),
+      state('false', style({ height: '0', visibility: 'hidden' })),
+      transition('false => true', animate('300ms ease')),
+      transition('true => false', animate('300ms ease'))
+    ])
+  ],
 })
 export class NgxDynamicTableComponent implements OnInit {
   /**
@@ -64,6 +73,10 @@ export class NgxDynamicTableComponent implements OnInit {
   @Input() isEditableInTable: boolean = false
   @Input() pageSize: number = 10
   @Output() action: EventEmitter<TableActionReturn> = new EventEmitter<TableActionReturn>()
+
+  // expandable
+  // columnsToDisplayWithExpand = ['expand']
+  expandedElement: any
 
   /**
    * @description default class of NgxDynamicTableComponent
@@ -84,7 +97,7 @@ export class NgxDynamicTableComponent implements OnInit {
   isEditable$: Observable<boolean> = this._dynamicTableService.isEditable$
   isInitialized: boolean = false
 
-  constructor(private _dynamicTableService: DynamicTableService) {
+  constructor(private _dynamicTableService: DynamicTableService, private _expandTemplateService: ExpandTemplateService) {
     this.dataSource = new MatTableDataSource([])
   }
   
@@ -94,7 +107,9 @@ export class NgxDynamicTableComponent implements OnInit {
         // console.log('data', data)
         if (data && data.length > 0) {
           setTimeout(() => {
-            if (this.tableoptions.showPaginator && this.paginator) {
+            this.setTableColumnNames(data[0])
+            
+            if (this.tableoptions.paginator && this.paginator) {
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'
               this.paginator._intl.previousPageLabel = 'Vorherige'
@@ -118,7 +133,7 @@ export class NgxDynamicTableComponent implements OnInit {
   
             this.dataSource.filterPredicate = (data: any, filter: string) => {
               let match: boolean = false
-              this.tableoptions.columnFilter.forEach((element: string) => {
+              this.tableoptions.columnFilter?.forEach((element: string) => {
                 match = (match || data[element].trim().toLowerCase().includes(filter)) // ToDo: error on filter "tr" in klarmeldung
               })
               return match
@@ -133,6 +148,16 @@ export class NgxDynamicTableComponent implements OnInit {
         console.log(err)
       }
     })
+  }
+
+  setTableColumnNames(data: any): void {
+    if (!this.tableoptions.columnNames) this.tableoptions.columnNames = Object.keys(data)
+    if (this.tableoptions.checkbox) this.tableoptions.columnNames = ['checkbox', ...this.tableoptions.columnNames]
+    if (this.tableoptions.count) this.tableoptions.columnNames = ['count', ...this.tableoptions.columnNames]
+    if (this.tableoptions.unread) this.tableoptions.columnNames = ['unread', ...this.tableoptions.columnNames]
+    if (this.tableoptions.sortRowManual) this.tableoptions.columnNames = ['sortrow', ...this.tableoptions.columnNames]
+    if (this.tableoptions.isExpandable) this.tableoptions.columnNames = [...this.tableoptions.columnNames, 'expand']
+    console.log(this.tableoptions.columnNames)
   }
 
   getRangeLabel = (page: number, pageSize: number, length: number): string => {
@@ -154,6 +179,13 @@ export class NgxDynamicTableComponent implements OnInit {
   isSticky(id: string) {
     const buttonToggleGroup: string[] = ['checkbox', 'count', 'name']
     return (buttonToggleGroup || []).indexOf(id) !== -1
+  }
+
+  expand(el: any) {
+    this.expandedElement = this.expandedElement === el ? null : el
+  }
+  getExpandTemplate(temp: string): TemplateRef<any> {
+    return this._expandTemplateService.get(temp)
   }
 
   /**

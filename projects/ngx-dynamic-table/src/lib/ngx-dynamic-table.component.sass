@@ -1,11 +1,23 @@
 *
     @apply ring-0 ring-offset-0 outline-none
 
+.mat-column-unread
+    @apply w-4 p-0 justify-center
+
+.mat-column-sortrow
+    @apply h-full w-0 p-0 justify-center
+
 .mat-column-count
     @apply w-16 pr-4 justify-center bg-white
 
 .mat-column-actions
     @apply w-20 justify-center
+
+    button
+        @apply mx-auto
+
+.mat-column-expand
+    @apply w-16 justify-center
 
     button
         @apply mx-auto
@@ -125,3 +137,40 @@ mat-paginator
 .paginator .ngx-pagination a:focus, .ngx-pagination button:focus
     // outline: none
     // background: #d4d4d4
+
+
+// expandable
+tr.example-detail-row
+  height: 0
+
+// tr.example-element-row:not(.example-expanded-row):hover
+//   background: whitesmoke
+
+// tr.example-element-row:not(.example-expanded-row):active
+//   background: #efefef
+
+// .example-element-row td
+//   border-bottom-width: 0
+
+// .example-element-detail
+//   overflow: hidden
+//   display: flex
+
+// .example-element-diagram
+//   min-width: 80px
+//   border: 2px solid black
+//   padding: 8px
+//   font-weight: lighter
+//   margin: 8px 0
+//   height: 104px
+
+// .example-element-symbol
+//   font-weight: bold
+//   font-size: 40px
+//   line-height: normal
+
+// .example-element-description
+//   padding: 16px
+
+// .example-element-description-attribution
+//   opacity: 0.5
