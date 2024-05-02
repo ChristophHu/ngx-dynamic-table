@@ -14,10 +14,10 @@ export class DynamicTableService {
 
   constructor() {}
 
-  setTextFilter(textFilter: string) {
+  public setTextFilter(textFilter: string) {
     this._textFilter.next(textFilter)
   }
-  setIsEditable(isEditable: boolean) {
+  public setIsEditable(isEditable: boolean) {
     this._isEditable.next(isEditable)
   }
 }

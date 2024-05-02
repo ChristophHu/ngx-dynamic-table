@@ -157,7 +157,8 @@ export class NgxDynamicTableComponent implements OnInit {
     if (this.tableoptions.unread) this.tableoptions.columnNames = ['unread', ...this.tableoptions.columnNames]
     if (this.tableoptions.sortRowManual) this.tableoptions.columnNames = ['sortrow', ...this.tableoptions.columnNames]
     if (this.tableoptions.isExpandable) this.tableoptions.columnNames = [...this.tableoptions.columnNames, 'expand']
-    console.log(this.tableoptions.columnNames)
+    if (this.tableoptions.actions) this.tableoptions.columnNames = [...this.tableoptions.columnNames, 'actions']
+    this.tableoptions.columnNames = [...new Set(this.tableoptions.columnNames)]
   }
 
   getRangeLabel = (page: number, pageSize: number, length: number): string => {
@@ -199,8 +200,8 @@ export class NgxDynamicTableComponent implements OnInit {
 
   /**
    * This function returns to returnTableAction by using @Output().
-   * @param {string}  id - The first number.
-   * @param {enum}    action - The second number.
+   * @param {string}  id - element.id.
+   * @param {enum}    action - action enum.
    * 
    * @example:
    * <button mat-menu-item class="!flex items-center" (click)="clickAction(element.id, action.action)">

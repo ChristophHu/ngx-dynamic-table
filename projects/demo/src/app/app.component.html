@@ -1,6 +1,6 @@
 <div class="absolute overflow-hidden inset-0 p-4 pb-0 bottom-16">
   <div class="flex flex-col mb-4 overflow-y-auto scrollbar-hide">
-    <!-- <div class="flex flex-row p-4 justify-between bg-tertiary border-b border-borderline rounded-t-lg z-10">
+    <div class="flex flex-row p-4 justify-between bg-tertiary border-b border-borderline rounded-t-lg z-10">
       <div>
         <h2 class="text-darker text-2xl font-bold">Einfache Tabelle</h2>
         <p class="text-sm text-dark">Dies ist eine einfach Tabelle. Sie enthält keine Nummerierung (showCount), keine Checks (showCheckbox), keine Optionen der einzelnen Zeilen (add actions), ist werder Erweiterbar (isExtendable), noch sind die Daten vorsortiert. Es wurden in dieser Tabelle nur die wirklich benötigten Parameter genutzt um eine Tabelle zu erstellen.</p>
@@ -24,12 +24,12 @@
       @error {
         <div class="h-4 bg-tertiary">Error</div>
       }
-      <div class="debug-item-hide bg-tertiary text-dark text-xs border-t border-borderline">
+      <!-- <div class="debug-item-hide bg-tertiary text-dark text-xs border-t border-borderline">
         <pre class="p-2 bg-gradient-45 to-gray-600">{{ (easydata$ | async) | json }}</pre>
-      </div>
+      </div> -->
       <div class="h-2 bg-tertiary rounded-b-lg"></div>
     </div>
-  </div> -->
+  </div>
 
   <div class="flex flex-col overflow-y-auto scrollbar-hide">
     <div class="flex flex-row p-4 justify-between bg-tertiary border-b border-borderline rounded-t-lg z-10">
@@ -37,28 +37,39 @@
         <h2 class="text-darker text-2xl font-bold">Tabelle</h2>
         <p class="text-sm text-dark">Dies ist die Beschreibung zu dieser Tabelle.</p>
       </div>
-      <div>
+      <div class="flex flex-row items-center">
+        <div class="">
+          <div class="relative mt-1 flex items-center">
+            <input type="text" id="textfilter" class="bg-input text-darker disabled:text-disabled placeholder:text-placeholder focus:border-static_gray border-borderline w-full p-3 border rounded focus:outline-none text-sm font-medium leading-none disabled:pointer-events-none" placeholder="suchen" (blur)="setTextfilter(textfilter.value)" #textfilter />
+            <div class="nxt_input_action_icon absolute h-full flex flex-row right-0 items-center justify-center">
+                <div class="grid h-8 w-8 stroke-2 place-items-center cursor-pointer" (click)="textfilter.value = ''; setTextfilter(textfilter.value)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                </div>
+            </div>
+        </div>
+        </div>
+
         <button class="w-10 h-10 m-2 p-1 bg-secondary text-accent shadow-inner rounded-full cursor-pointer hover:bg-primary duration-200" [matMenuTriggerFor]="menu">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><line x1="4" y1="10" x2="20" y2="10" /><line x1="10" y1="4" x2="10" y2="20" /></svg>
         </button>
 
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item class="!flex items-center" (click)="refreshTable()">
-              <div class="flex flex-row">
-                <div class=" h-6 w-6 fill-dark">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                </div>
-                <span class="ml-4">Refresh</span>
+        <mat-menu #menu="matMenu" class="custom-menu">
+          <button mat-menu-item class="!flex items-center" (click)="refreshTable()">
+            <div class="flex flex-row">
+              <div class=" h-6 w-6 fill-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
               </div>
-            </button>
-            <button mat-menu-item class="!flex items-center">
-              <div class="flex flex-row">
-                <div class=" h-6 w-6 fill-dark">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                </div>
-                <span class="ml-4">Reload</span>
+              <span class="ml-4">Refresh</span>
+            </div>
+          </button>
+          <button mat-menu-item class="!flex items-center">
+            <div class="flex flex-row">
+              <div class=" h-6 w-6 fill-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
               </div>
-            </button>
+              <span class="ml-4">Reload</span>
+            </div>
+          </button>
         </mat-menu>
       </div>
     </div>
