@@ -127,7 +127,7 @@
         </table>
         <div [ngClass]="{'border-t border-borderline': dataSource.data.length > pageSize}">
             <!-- <mat-paginator class="sticky bottom-0 z-10" *ngIf="table.showPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator> -->
-            <mat-paginator nxtMobilePagination [appCustomLength]="dataSource.data.length" [hideHowManyDisplayedEl]="true" [length]="dataSource.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator>
+            <mat-paginator *ngIf="tableoptions.paginator" nxtMobilePagination [appCustomLength]="dataSource.data.length" [hideHowManyDisplayedEl]="true" [length]="dataSource.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updatePaginator()"></mat-paginator>
         </div>
     </div>
     <scroll-indicator [scrollableContent]="scrollableContent" [distance]="tableoptions.paginator ? 8 : 0" [change]="changePaginator$"></scroll-indicator>
@@ -141,11 +141,11 @@
             </div>
             <span class="sr-only">Loading...</span>
         </div>
-        <div *ngIf="(data$ | async)?.length == 0" class="!flex text-xl">
+        <div *ngIf="(data$ | async)?.length == 0" class="!flex p-4 text-xl items-center justify-between">
             <div class="w-8 h-8">
                 <table-icons class="stroke-2 stroke-current" name="alert-triangle"></table-icons>
             </div>
-            <span class="mx-2">Es konnten keine Daten geladen werden.</span>
+            <span class="mx-2 text-sm">Es konnten keine Daten geladen werden.</span>
             <button class="w-8 h-8 text-accent" (click)="refresh()">
                 <table-icons class="stroke-2 stroke-current" name="refresh"></table-icons>
             </button>
