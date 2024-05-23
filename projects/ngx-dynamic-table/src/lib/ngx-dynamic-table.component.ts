@@ -108,7 +108,6 @@ export class NgxDynamicTableComponent implements OnInit {
         if (data && data.length > 0) {
           setTimeout(() => {
             this.setTableColumnNames(data[0])
-            
             if (this.tableoptions.paginator && this.paginator) {
               this.paginator._intl.itemsPerPageLabel = 'Elemente pro Seite'
               this.paginator._intl.nextPageLabel = 'Nächste'
@@ -116,7 +115,7 @@ export class NgxDynamicTableComponent implements OnInit {
               this.paginator._intl.getRangeLabel = this.getRangeLabel
               this.dataSource.paginator = this.paginator
             }
-  
+            
             if (this.tableoptions.sortColumn && this.tableoptions.sortStart && !this.isInitialized) {
               if (this.sort != undefined) this.sort.sort(({ id: this.tableoptions.sortColumn, start: this.tableoptions.sortStart }) as MatSortable)
             }
@@ -140,8 +139,8 @@ export class NgxDynamicTableComponent implements OnInit {
             }
   
             this._dynamicTableService.textFilter$.subscribe((data) => this.textfilter(data))
+            this.isInitialized = true
           }, 20)
-          this.isInitialized = true
         }
       },
       error(err) {
