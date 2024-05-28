@@ -72,13 +72,14 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // first table - easy table
   easydata$: Observable<any[]> = of([
-    { date: '01.01.2024 00:00:59', description: 'Berlin' },
-    { date: '01.01.2023 00:00:59', description: 'Hamburg' },
+    { date: '01.01.2024 00:00:59', description: 'Berlin', klar: true },
+    { date: '01.01.2023 00:00:59', description: 'Hamburg', klar: false },
   ])
   easytable: Tableoptions = {
     columns: [
       { id: '1', name: 'date', header: 'Datum/Zeit', cell: 'date', pipe: { name: DatePipe, args: 'dd.MM.YYYY HH:mm:ss'}, hidden: false, sortable: true },
       { id: '2', name: 'description', header: 'Beschreibung', cell: 'description', hidden: false, sortable: true },
+      { id: '3', name: 'klar', header: 'Klar', cell: 'klar', type: 'checkbox', disabled: true, hidden: false, sortable: true }
     ]
   }
 
