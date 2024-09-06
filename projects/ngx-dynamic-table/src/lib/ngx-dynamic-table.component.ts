@@ -18,16 +18,9 @@ import { MobilePaginationDirective } from './directives/mobile-pagination/mobile
 import { TableIconsComponent } from './components/icons/table-icons.component'
 import { state } from '@angular/animations'
 import { ExpandTemplateService } from './services/expand-template.service'
-
-// export const rowsAnimation = trigger('rowsAnimation', [
-//   transition('void => *', [
-//     style({ height: '*', opacity: '0', transform: 'translateX(-550px)', 'box-shadow': 'none' }),
-//     sequence([
-//       animate(".35s ease", style({ height: '*', opacity: '.2', transform: 'translateX(0)', 'box-shadow': 'none'  })),
-//       animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)' }))
-//     ])
-//   ])
-// ])
+import { rowsAnimation } from './animations/rowsAnimation'
+import { collapse } from './animations/collapse'
+import { hide } from './animations/hide'
 
 /**
  * This component to demonstrate Compodoc documentation.
@@ -55,12 +48,9 @@ import { ExpandTemplateService } from './services/expand-template.service'
   templateUrl: './ngx-dynamic-table.component.html',
   styleUrls: ['./ngx-dynamic-table.component.sass'],
   animations: [
-    trigger('collapse', [
-      state('true', style({ height: '*' })),
-      state('false', style({ height: '0', visibility: 'hidden' })),
-      transition('false => true', animate('300ms ease')),
-      transition('true => false', animate('300ms ease'))
-    ])
+    rowsAnimation,
+    collapse,
+    hide
   ],
 })
 export class NgxDynamicTableComponent implements OnInit {
@@ -125,8 +115,10 @@ export class NgxDynamicTableComponent implements OnInit {
             // ToDo: date is hardcoded!
             this.dataSource.sortingDataAccessor = (item: any, property: any) => {
               switch (property) {
-                 case 'date': return new Date(item.date)
-                 default: return item[property]
+                 case 'date': 
+                  return new Date(item.date)
+                 default: 
+                  return item[property]
               }
             }
   
@@ -193,7 +185,7 @@ export class NgxDynamicTableComponent implements OnInit {
    *
    * @param filterText - Text to filter in table.
    */
-  textfilter(filterText: string) {
+  public textfilter(filterText: string = 'test') {
     this.dataSource.filter = filterText.trim().toLowerCase()
   }
 
@@ -202,7 +194,7 @@ export class NgxDynamicTableComponent implements OnInit {
    * @param {string}  id - element.id.
    * @param {enum}    action - action enum.
    * 
-   * @example:
+   * @example
    * <button mat-menu-item class="!flex items-center" (click)="clickAction(element.id, action.action)">
    */
   clickAction(id: string, action: TableActionEnum) {
@@ -210,27 +202,41 @@ export class NgxDynamicTableComponent implements OnInit {
   }
 
   /**
-   * Emits a corresponding event to create an new row.
+   * Emits a corresponding event to create a new row.
    */
   create() {
     this.action.emit({ id: '', action: TableActionEnum.CREATE })
   }
   /**
-   * Emits a corresponding event to edit an row.
+   * Emits a corresponding event to edit a row.
    * @param {string} row - The selected row.
    */
   edit(row: any) {
     if (!this.isEditableInTable) this.action.emit({ row, action: TableActionEnum.EDIT })
   }
+  /**
+   * Emits a corresponding event to delete a row.
+   * @param {string} row - The selected row.
+   */
   delete(row: any) {
     this.action.emit({ row, action: TableActionEnum.DELETE })
   }
+  /**
+   * Emits a corresponding event to check a row.
+   * @param {string} row - The checked row.
+   */
   check(row: any) {
     this.action.emit({ row, action: TableActionEnum.CHECK })
   }
+  /**
+   * Emits a corresponding event to check all rows.
+   */
   checkAll() {
     this.action.emit({ action: TableActionEnum.CHECKALL })
   }
+  /**
+   * Emits a corresponding event to refresh the table.
+   */
   refresh() {
     this.action.emit({ action: TableActionEnum.REFRESH })
   }

@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
    * The isVisible property belongs to the data of the dynamic-table.
    * It is used to show or hide the table, depended on the data.
    * 
-   * @type {boolean}
+   * @type {boolean} isVisible - The isVisible property.
    */
   isVisible: boolean = false
   isSpinnerVisible: boolean = true
@@ -114,23 +114,27 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   returnTableAction(event: TableActionReturn) {
     switch (event.action) {
       case TableActionEnum.DELETE:
-        console.log('delete row')
+        // console.log('delete row', event)
+        this.deleteRow(event.id!)
+        // setTimeout(() => {
+        //   // this.deleteRow(event.id!)
+        // , 2000 })
         break
       case TableActionEnum.EDIT:
-        console.log('edit row')
+        // console.log('edit row')
         break
       case TableActionEnum.SHOW:
-        console.log('show row')
+        // console.log('show row')
         break
       case TableActionEnum.REFRESH:
-        console.log('refresh table')
+        // console.log('refresh table')
         this.setData()
         break
       case TableActionEnum.CHECK:
-        console.log('check row', event.row)
+        // console.log('check row', event.row)
         break
       case TableActionEnum.CHECKALL:
-        console.log('check all rows')
+        // console.log('check all rows')
         this.isCheckedAll = !this.isCheckedAll
         this._data.value.forEach((row: any) => {
           row.checked = this.isCheckedAll
@@ -164,5 +168,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   resetTextfilter() {
     this._dynamicTableService.setTextFilter('')
+  }
+  deleteRow(id: string) {
+    this.data = this.data.filter((el: any) => el.id != id)
+    this.setData()
   }
 }
