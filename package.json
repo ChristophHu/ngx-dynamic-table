@@ -37,7 +37,7 @@
     "@angular-devkit/build-angular": "^17.2.1",
     "@angular/cli": "^17.2.0",
     "@angular/compiler-cli": "^17.2.0",
-    "@compodoc/compodoc": "^1.1.23",
+    "@compodoc/compodoc": "^1.1.25",
     "@types/jasmine": "~5.1.0",
     "angular-cli-ghpages": "^2.0.0-beta.2",
     "autoprefixer": "^10.4.19",
