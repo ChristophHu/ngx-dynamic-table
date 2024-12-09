@@ -16,7 +16,7 @@ export class StickyDirective implements OnInit {
   }
   private _scrollContainer!: HTMLElement
 
-  @Input() zIndex = 10
+  @Input() zIndex = 40
   @Input() top = 0
 
   constructor(
@@ -27,6 +27,7 @@ export class StickyDirective implements OnInit {
 
   ngOnInit(): void {
     this.makeSticky()
+    console.log('makeSticky')
   }
 
   private setHTMLElement(
@@ -48,7 +49,8 @@ export class StickyDirective implements OnInit {
     this.setStylePropertyToElement(nativeElement, 'position', '-webkit-sticky')
     this.setStylePropertyToElement(nativeElement, 'position', 'sticky')
     this.setStylePropertyToElement(nativeElement, 'top', `${this.top}px`)
-    this.setStylePropertyToElement(nativeElement, 'zIndex', this.zIndex.toString())
+    this.setStylePropertyToElement(nativeElement, 'zIndex', `${this.zIndex}`)
+    console.log(this.zIndex)
   }
 
   private setStylePropertyToElement(

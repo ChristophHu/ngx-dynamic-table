@@ -121,7 +121,7 @@
                     </div>
                 </td>
             </ng-container>
-            <tr mat-header-row *matHeaderRowDef="tableoptions.columnNames; sticky: true"></tr>
+            <tr mat-header-row *matHeaderRowDef="tableoptions.columnNames; sticky: false"></tr>
             <tr mat-row *matRowDef="let row; columns: tableoptions.columnNames;" (click)="edit(row)" class="group" [@hide]="true"></tr>
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>

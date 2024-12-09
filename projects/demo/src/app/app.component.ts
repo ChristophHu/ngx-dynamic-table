@@ -9,6 +9,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { CircularSpinnerComponent } from '../../../ngx-dynamic-table/src/lib/components/circular-spinner/circular-spinner.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { DynamicTableService, ExpandTemplateService } from '../../../ngx-dynamic-table/src/public-api';
+import { TableIconsComponent } from '../../../ngx-dynamic-table/src/lib/components/icons/table-icons.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ import { DynamicTableService, ExpandTemplateService } from '../../../ngx-dynamic
     DatePipe,
     MatMenuModule,
     NgxDynamicTableComponent,
-    RouterOutlet
+    RouterOutlet,
+    TableIconsComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
@@ -67,7 +69,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     { id: '2', name: 'Tom', date: '01.01.2023 00:00:59', ort: 'Hamburg', checked: false, description: 'Test2' },
     { id: '3', name: 'Thomas', date: '01.02.2023 00:00:59', ort: 'Dresden', checked: false, description: 'Test3' },
     { id: '4', name: 'Martin', date: '03.02.2023 00:00:59', ort: 'München', checked: false, description: 'Halllo1' },
-    { id: '5', name: 'Markus', date: '04.02.2023 00:00:59', ort: 'Köln', checked: false, description: 'Hallo2' }
+    { id: '5', name: 'Markus', date: '04.02.2023 00:00:59', ort: 'Köln', checked: false, description: 'Hallo2' },
+    { id: '6', name: 'Rene', date: '04.02.2023 00:01:59', ort: 'Köln', checked: false, description: 'Hallo2' }
   ]
 
   // first table - easy table
@@ -98,7 +101,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     columnFilter: ['name', 'date', 'ort', 'description'],
     columnNames: ['name', 'date', 'ort'],
     isExpandable: true,
-    checkbox: true,
+    checkbox: false,
     count: false,
     paginator: true,
     sortRowManual: false,

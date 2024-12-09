@@ -1,6 +1,6 @@
 {
   "name": "@christophhu/ngx-dynamic-table",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Create Angular Material Table dynamically.",
   "license": "MIT",
   "author": {
