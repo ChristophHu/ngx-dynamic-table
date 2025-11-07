@@ -111,9 +111,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   /**
- * @param {TableActionReturn} event  The target to process
- * @returns The processed target number
- */
+   * @param {TableActionReturn} event  The target to process
+   * @returns The processed target number
+   */
   returnTableAction(event: TableActionReturn) {
     switch (event.action) {
       case TableActionEnum.DELETE:

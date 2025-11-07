@@ -20,7 +20,6 @@ import { state } from '@angular/animations'
 import { ExpandTemplateService } from './services/expand-template.service'
 import { rowsAnimation } from './animations/rowsAnimation'
 import { collapse } from './animations/collapse'
-import { hide } from './animations/hide'
 
 /**
  * This component to demonstrate Compodoc documentation.
@@ -49,8 +48,7 @@ import { hide } from './animations/hide'
   styleUrls: ['./ngx-dynamic-table.component.sass'],
   animations: [
     rowsAnimation,
-    collapse,
-    hide
+    collapse
   ],
 })
 export class NgxDynamicTableComponent implements OnInit {

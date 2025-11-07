@@ -32,7 +32,7 @@
             "styles": [
               "projects/demo/src/custom-theme.scss",
               "projects/demo/src/styles.sass",
-              "projects/ngx-dynamic-table/src/lib/style/ngx-dynamic-table.sass"
+              "projects/ngx-dynamic-table/src/lib/style/ngx-dynamic-table.scss"
             ],
             "scripts": []
           },

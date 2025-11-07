@@ -1,0 +1,23 @@
+/* Hide animation - CSS version */
+.hide-animation {
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+
+.hide-animation.hidden {
+  opacity: 0;
+}
+
+/* Alternative keyframe-based approach */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.hide-fade-out {
+  animation: fadeOut 200ms ease-out forwards;
+}
